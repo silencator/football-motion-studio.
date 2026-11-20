@@ -1,0 +1,37 @@
+{
+  "name": "football-motion-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Premium Apple-inspired football motion graphics studio built on Remotion",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio",
+    "typecheck": "tsc --noEmit",
+    "analyze": "node scripts/analyze-audio.mjs",
+    "render": "node scripts/render.mjs",
+    "render:test": "node scripts/render.mjs Test-Landscape-30 && node scripts/render.mjs Test-Vertical-60"
+  },
+  "dependencies": {
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.2",
+    "@remotion/cli": "4.0.545",
+    "@remotion/fonts": "4.0.545",
+    "@remotion/media": "4.0.545",
+    "@remotion/media-utils": "4.0.545",
+    "@remotion/renderer": "4.0.545",
+    "@remotion/three": "4.0.545",
+    "@remotion/transitions": "4.0.545",
+    "gsap": "3.15.1",
+    "lucide-react": "1.77.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "remotion": "4.0.545",
+    "three": "0.187.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/three": "0.187.0",
+    "typescript": "5.9.3"
+  }
+}
