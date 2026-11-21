@@ -271,3 +271,16 @@ export const S17: React.FC = () => {
     </AbsoluteFill>
   );
 };
+
+/* End card · Apple-style sign-off after the narration ends. */
+export const EndCard: React.FC = () => {
+  const {p} = useT();
+  const k = p(71.85, 1.0, paperEase.arrive);
+  return (
+    <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center'}}>
+      <div style={{fontFamily: fonts.display, fontSize: 46, fontWeight: 700, letterSpacing: '-0.02em', color: paper.text, opacity: k, filter: `blur(${(1 - k) * 8}px)`, translate: `0 ${(1 - k) * 14}px`}}>
+        Produced by Shaljr
+      </div>
+    </AbsoluteFill>
+  );
+};

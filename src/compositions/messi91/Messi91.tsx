@@ -5,11 +5,12 @@ import {interFamily} from '../../design/fonts';
 import {PaperBackground, Scene} from '../../components/ios';
 import {Sfx} from '../../sfx/Sfx';
 import {S1, S2, S3, S4, S5, S6, S7, S8} from './scenesA';
-import {S9, S10, S11, S12, S13, S14, S15, S16, S17} from './scenesB';
+import {S9, S10, S11, S12, S13, S14, S15, S16, S17, EndCard} from './scenesB';
 import {W} from './words';
 
 /** "Messi's 91 goals in 2012" — vertical 1080×1920 @ 60 fps. The narration is the master clock. */
-export const MESSI91_DURATION_SEC = 71.4;
+export const NARRATION_END_SEC = 71.4;
+export const MESSI91_DURATION_SEC = 74.4; // narration + Apple-style end card
 
 export const Messi91: React.FC = () => (
   <AbsoluteFill style={{fontFamily: interFamily}}>
@@ -30,7 +31,8 @@ export const Messi91: React.FC = () => (
     <Scene from={52.3} to={57.3} enter="zoom" exit="blur" name="S14 summary"><S14 /></Scene>
     <Scene from={57.3} to={60.2} enter="blur" name="S15 explain"><S15 /></Scene>
     <Scene from={60.2} to={65.85} exit="blur" name="S16 no limit"><S16 /></Scene>
-    <Scene from={65.85} to={MESSI91_DURATION_SEC + 1} enter="blur" exit="none" name="S17 finale"><S17 /></Scene>
+    <Scene from={65.85} to={71.45} enter="blur" exit="blur" name="S17 finale"><S17 /></Scene>
+    <Scene from={71.8} to={MESSI91_DURATION_SEC + 1} enter="none" exit="none" name="End card"><EndCard /></Scene>
 
     {/* Narration: untouched master track */}
     <Audio src={staticFile('audio/messi-91.mp3')} />
