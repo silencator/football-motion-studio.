@@ -1,0 +1,873 @@
+[
+ {
+  "start": 0,
+  "end": 4.25,
+  "text": "In 2012, Leonin Messi scored 91 official goals.",
+  "words": [
+   [
+    "IN",
+    0.0
+   ],
+   [
+    "TWENTY",
+    0.16
+   ],
+   [
+    "TWELVE",
+    0.52
+   ],
+   [
+    "LEONINE",
+    1.0
+   ],
+   [
+    "MESSEY",
+    1.52
+   ],
+   [
+    "SCORED",
+    1.92
+   ],
+   [
+    "NINETY",
+    2.36
+   ],
+   [
+    "ONE",
+    2.92
+   ],
+   [
+    "OFFICIAL",
+    3.2
+   ],
+   [
+    "GOALS",
+    3.76
+   ]
+  ]
+ },
+ {
+  "start": 4.54,
+  "end": 5.48,
+  "text": "Not in a season.",
+  "words": [
+   [
+    "NOT",
+    4.49
+   ],
+   [
+    "IN",
+    4.69
+   ],
+   [
+    "A",
+    4.85
+   ],
+   [
+    "SEASON",
+    4.97
+   ]
+  ]
+ },
+ {
+  "start": 5.77,
+  "end": 7.54,
+  "text": "in a single calendar year.",
+  "words": [
+   [
+    "IN",
+    5.72
+   ],
+   [
+    "A",
+    5.88
+   ],
+   [
+    "SINGLE",
+    6.04
+   ],
+   [
+    "CALENDAR",
+    6.52
+   ],
+   [
+    "YEAR",
+    7.16
+   ]
+  ]
+ },
+ {
+  "start": 7.93,
+  "end": 11.77,
+  "text": "Across Barcelona and Argentina, he played 69 matches.",
+  "words": [
+   [
+    "ACROSS",
+    7.88
+   ],
+   [
+    "BARCELONA",
+    8.24
+   ],
+   [
+    "AND",
+    8.92
+   ],
+   [
+    "ARGENTINA",
+    9.08
+   ],
+   [
+    "HE",
+    9.84
+   ],
+   [
+    "PLAYED",
+    10.0
+   ],
+   [
+    "SIXTY",
+    10.36
+   ],
+   [
+    "NINE",
+    10.84
+   ],
+   [
+    "MATCHES",
+    11.2
+   ]
+  ]
+ },
+ {
+  "start": 12.01,
+  "end": 13.72,
+  "text": "That's more than a goal per game.",
+  "words": [
+   [
+    "THAT'S",
+    11.96
+   ],
+   [
+    "MORE",
+    12.24
+   ],
+   [
+    "THAN",
+    12.4
+   ],
+   [
+    "A",
+    12.52
+   ],
+   [
+    "GOAL",
+    12.68
+   ],
+   [
+    "PER",
+    13.04
+   ],
+   [
+    "GAME",
+    13.28
+   ]
+  ]
+ },
+ {
+  "start": 14.08,
+  "end": 15.88,
+  "text": "and the year was relentless.",
+  "words": [
+   [
+    "AND",
+    14.03
+   ],
+   [
+    "THE",
+    14.15
+   ],
+   [
+    "YEAR",
+    14.35
+   ],
+   [
+    "WAS",
+    14.75
+   ],
+   [
+    "RELENTLESS",
+    14.99
+   ]
+  ]
+ },
+ {
+  "start": 16.12,
+  "end": 17.66,
+  "text": "Seven goals in January.",
+  "words": [
+   [
+    "SEVEN",
+    16.07
+   ],
+   [
+    "GOALS",
+    16.55
+   ],
+   [
+    "IN",
+    16.91
+   ],
+   [
+    "JANUARY",
+    17.07
+   ]
+  ]
+ },
+ {
+  "start": 17.92,
+  "end": 19.08,
+  "text": "10 in February",
+  "words": [
+   [
+    "TEN",
+    17.87
+   ],
+   [
+    "IN",
+    18.23
+   ],
+   [
+    "FEBRUARY",
+    18.47
+   ]
+  ]
+ },
+ {
+  "start": 19.33,
+  "end": 20.95,
+  "text": "than 13 in March.",
+  "words": [
+   [
+    "THAN",
+    19.28
+   ],
+   [
+    "THIRTEEN",
+    19.52
+   ],
+   [
+    "IN",
+    20.28
+   ],
+   [
+    "MARCH",
+    20.52
+   ]
+  ]
+ },
+ {
+  "start": 21.27,
+  "end": 23.55,
+  "text": "But March brought something extraordinary.",
+  "words": [
+   [
+    "BUT",
+    21.22
+   ],
+   [
+    "MARCH",
+    21.46
+   ],
+   [
+    "BROUGHT",
+    21.82
+   ],
+   [
+    "SOMETHING",
+    22.18
+   ],
+   [
+    "EXTRAORDINARY",
+    22.62
+   ]
+  ]
+ },
+ {
+  "start": 23.89,
+  "end": 28.89,
+  "text": "Against Byer Leverkusen, Messi scored five goals in a single Champions League match.",
+  "words": [
+   [
+    "AGAINST",
+    23.84
+   ],
+   [
+    "BIER",
+    24.16
+   ],
+   [
+    "LABOR",
+    24.48
+   ],
+   [
+    "CUSAN",
+    24.76
+   ],
+   [
+    "MESSY",
+    25.28
+   ],
+   [
+    "SCORED",
+    25.68
+   ],
+   [
+    "FIVE",
+    26.16
+   ],
+   [
+    "GOALS",
+    26.56
+   ],
+   [
+    "IN",
+    26.96
+   ],
+   [
+    "A",
+    27.12
+   ],
+   [
+    "SINGLE",
+    27.28
+   ],
+   [
+    "CHAMPIONS",
+    27.72
+   ],
+   [
+    "LEAGUE",
+    28.24
+   ],
+   [
+    "MATCH",
+    28.56
+   ]
+  ]
+ },
+ {
+  "start": 29.18,
+  "end": 30.63,
+  "text": "He was scoring everywhere.",
+  "words": [
+   [
+    "HE",
+    29.13
+   ],
+   [
+    "WAS",
+    29.29
+   ],
+   [
+    "SCORING",
+    29.45
+   ],
+   [
+    "EVERYWHERE",
+    29.97
+   ]
+  ]
+ },
+ {
+  "start": 30.86,
+  "end": 34.99,
+  "text": "La Liga, the Champions League, domestic cups, and international football.",
+  "words": [
+   [
+    "THE",
+    30.81
+   ],
+   [
+    "LEGA",
+    31.01
+   ],
+   [
+    "THE",
+    31.45
+   ],
+   [
+    "CHAMPION'S",
+    31.65
+   ],
+   [
+    "LEAGUE",
+    32.25
+   ],
+   [
+    "DOMESTIC",
+    32.61
+   ],
+   [
+    "CUPS",
+    33.17
+   ],
+   [
+    "AND",
+    33.61
+   ],
+   [
+    "INTERNATIONAL",
+    33.85
+   ],
+   [
+    "FOOTBALL",
+    34.53
+   ]
+  ]
+ },
+ {
+  "start": 35.36,
+  "end": 38.0,
+  "text": "Barcelona contributed 79 goals.",
+  "words": [
+   [
+    "PORCELONA",
+    35.31
+   ],
+   [
+    "CONTRIBUTED",
+    35.95
+   ],
+   [
+    "SEVENTY",
+    36.59
+   ],
+   [
+    "NINE",
+    37.11
+   ],
+   [
+    "GOALS",
+    37.51
+   ]
+  ]
+ },
+ {
+  "start": 38.21,
+  "end": 40.08,
+  "text": "Argentina added another 12.",
+  "words": [
+   [
+    "ARGENTINA",
+    38.16
+   ],
+   [
+    "ADDED",
+    38.88
+   ],
+   [
+    "ANOTHER",
+    39.24
+   ],
+   [
+    "TWELVE",
+    39.6
+   ]
+  ]
+ },
+ {
+  "start": 40.39,
+  "end": 43.64,
+  "text": "And with every goal, the record moved further out of reach.",
+  "words": [
+   [
+    "AND",
+    40.34
+   ],
+   [
+    "WITH",
+    40.5
+   ],
+   [
+    "EVERY",
+    40.74
+   ],
+   [
+    "GOAL",
+    41.06
+   ],
+   [
+    "THE",
+    41.42
+   ],
+   [
+    "RECORD",
+    41.62
+   ],
+   [
+    "MOVED",
+    42.1
+   ],
+   [
+    "FURTHER",
+    42.42
+   ],
+   [
+    "OUT",
+    42.9
+   ],
+   [
+    "OF",
+    43.1
+   ],
+   [
+    "REACH",
+    43.26
+   ]
+  ]
+ },
+ {
+  "start": 43.99,
+  "end": 49.12,
+  "text": "The previous benchmark belonged to Gerd Muller, who scored 85 goals in 1972.",
+  "words": [
+   [
+    "THE",
+    43.94
+   ],
+   [
+    "PREVIOUS",
+    44.06
+   ],
+   [
+    "BENCH",
+    44.46
+   ],
+   [
+    "MARK",
+    44.78
+   ],
+   [
+    "BELONGED",
+    45.02
+   ],
+   [
+    "TO",
+    45.38
+   ],
+   [
+    "GERD",
+    45.5
+   ],
+   [
+    "MUELLER",
+    45.86
+   ],
+   [
+    "WHO",
+    46.3
+   ],
+   [
+    "SCORED",
+    46.46
+   ],
+   [
+    "EIGHTY",
+    46.82
+   ],
+   [
+    "FIVE",
+    47.18
+   ],
+   [
+    "GOALS",
+    47.54
+   ],
+   [
+    "IN",
+    47.86
+   ],
+   [
+    "NINETEEN",
+    48.02
+   ],
+   [
+    "SEVENTY",
+    48.46
+   ],
+   [
+    "TWO",
+    48.9
+   ]
+  ]
+ },
+ {
+  "start": 49.48,
+  "end": 50.6,
+  "text": "40 years later?",
+  "words": [
+   [
+    "FORTY",
+    49.43
+   ],
+   [
+    "YEARS",
+    49.91
+   ],
+   [
+    "LATER",
+    50.23
+   ]
+  ]
+ },
+ {
+  "start": 50.83,
+  "end": 52.12,
+  "text": "Messi went beyond it.",
+  "words": [
+   [
+    "MESSY",
+    50.78
+   ],
+   [
+    "WENT",
+    51.3
+   ],
+   [
+    "BEYOND",
+    51.54
+   ],
+   [
+    "IT",
+    51.98
+   ]
+  ]
+ },
+ {
+  "start": 52.47,
+  "end": 55.58,
+  "text": "91 goals 69 appearances",
+  "words": [
+   [
+    "NINETY",
+    52.42
+   ],
+   [
+    "ONE",
+    52.98
+   ],
+   [
+    "GOALS",
+    53.3
+   ],
+   [
+    "SIXTY",
+    53.9
+   ],
+   [
+    "NINE",
+    54.46
+   ],
+   [
+    "APPEARANCES",
+    54.86
+   ]
+  ]
+ },
+ {
+  "start": 55.84,
+  "end": 57.13,
+  "text": "one calendar year.",
+  "words": [
+   [
+    "ONE",
+    55.79
+   ],
+   [
+    "CALENDAR",
+    56.19
+   ],
+   [
+    "YEAR",
+    56.83
+   ]
+  ]
+ },
+ {
+  "start": 57.5,
+  "end": 59.97,
+  "text": "So how do you even explain a year like that?",
+  "words": [
+   [
+    "SO",
+    57.45
+   ],
+   [
+    "HOW",
+    57.77
+   ],
+   [
+    "DO",
+    58.01
+   ],
+   [
+    "YOU",
+    58.17
+   ],
+   [
+    "EVEN",
+    58.33
+   ],
+   [
+    "EXPLAIN",
+    58.57
+   ],
+   [
+    "A",
+    59.09
+   ],
+   [
+    "YEAR",
+    59.25
+   ],
+   [
+    "LIKE",
+    59.53
+   ],
+   [
+    "THAT",
+    59.81
+   ]
+  ]
+ },
+ {
+  "start": 60.4,
+  "end": 65.7,
+  "text": "movement, precision, consistency, and a finishing ability that seem to have no limit.",
+  "words": [
+   [
+    "MOVEMENT",
+    60.35
+   ],
+   [
+    "PRECISION",
+    61.11
+   ],
+   [
+    "CONSISTENCY",
+    61.95
+   ],
+   [
+    "AND",
+    62.91
+   ],
+   [
+    "A",
+    63.07
+   ],
+   [
+    "FINISHING",
+    63.19
+   ],
+   [
+    "ABILITY",
+    63.67
+   ],
+   [
+    "THAT",
+    64.19
+   ],
+   [
+    "SEEMED",
+    64.35
+   ],
+   [
+    "TO",
+    64.63
+   ],
+   [
+    "HAVE",
+    64.79
+   ],
+   [
+    "NO",
+    64.99
+   ],
+   [
+    "LIMIT",
+    65.31
+   ]
+  ]
+ },
+ {
+  "start": 66.05,
+  "end": 67.82,
+  "text": "Messi didn't just break a record.",
+  "words": [
+   [
+    "MESSY",
+    66.0
+   ],
+   [
+    "DIDN'T",
+    66.36
+   ],
+   [
+    "JUST",
+    66.68
+   ],
+   [
+    "BREAK",
+    66.88
+   ],
+   [
+    "A",
+    67.24
+   ],
+   [
+    "RECORD",
+    67.36
+   ]
+  ]
+ },
+ {
+  "start": 68.06,
+  "end": 71.0,
+  "text": "He created a number that still feels impossible.",
+  "words": [
+   [
+    "HE",
+    68.01
+   ],
+   [
+    "CREATED",
+    68.17
+   ],
+   [
+    "A",
+    68.65
+   ],
+   [
+    "NUMBER",
+    68.81
+   ],
+   [
+    "THAT",
+    69.21
+   ],
+   [
+    "STILL",
+    69.49
+   ],
+   [
+    "FEELS",
+    69.81
+   ],
+   [
+    "IMPOSSIBLE",
+    70.25
+   ]
+  ]
+ }
+]

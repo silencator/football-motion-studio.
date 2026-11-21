@@ -78,3 +78,37 @@ export const timing = {
   transition: 0.8,
   sceneMin: 2.5,
 } as const;
+
+/**
+ * LIGHT "paper" theme — derived from the owner's motion reference (iOS-style UI motion on off-white)
+ * and photo reference (desaturated cut-outs, soft offset shadow, white vignette). Default for productions.
+ */
+export const paper = {
+  bg: '#F2F2F4',
+  bgEdge: '#DADADF',
+  text: '#1D1D1F',
+  text2: 'rgba(29,29,31,0.55)',
+  text3: 'rgba(29,29,31,0.28)',
+  hairline: 'rgba(29,29,31,0.10)',
+  card: '#FFFFFF',
+  island: '#0B0B0D',
+  islandText: '#F5F5F7',
+  blue: '#0A7CFF',
+  green: '#34C759',
+  grey: '#E5E5EA',
+  gold: '#C9A227',
+  shadow: '0 2px 6px rgba(0,0,0,0.05), 0 24px 60px rgba(0,0,0,0.12)',
+  shadowSoft: '0 1px 3px rgba(0,0,0,0.05), 0 12px 32px rgba(0,0,0,0.08)',
+  // Team palettes
+  barca: {blue: '#123A8C', garnet: '#A50044', gold: '#EDBB00', gradient: 'linear-gradient(120deg, #123A8C 0%, #5B1F6E 55%, #A50044 100%)'},
+  argentina: {celeste: '#6CACE4', white: '#FFFFFF', navy: '#1B2A4A', gradient: 'linear-gradient(120deg, #8EC3EE 0%, #6CACE4 100%)'},
+  muller: {tone: '#8E8E93'},
+} as const;
+
+/** Signature curves from the reference: fast arrival, long silky settle; springy lock for numbers. */
+export const paperEase = {
+  arrive: Easing.bezier(0.12, 0.9, 0.18, 1),
+  lock: Easing.bezier(0.2, 1.35, 0.35, 1), // slight overshoot, used sparingly
+  glide: Easing.bezier(0.45, 0, 0.2, 1),
+  exit: Easing.bezier(0.55, 0, 0.9, 0.4),
+} as const;

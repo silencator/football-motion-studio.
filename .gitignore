@@ -5,3 +5,6 @@ out/
 *.webm
 .DS_Store
 .env
+
+# Licensed / third-party photos are kept out of git (re-create with scripts/grade-photos.py)
+public/images/messi/

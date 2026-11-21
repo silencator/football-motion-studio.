@@ -1,6 +1,7 @@
 import React from 'react';
 import {Composition, Folder} from 'remotion';
 import {narrationMetadata} from './audio/narration';
+import {Messi91} from './compositions/messi91/Messi91';
 import {TestAnimation, testSchema} from './compositions/test/TestAnimation';
 
 /**
@@ -11,6 +12,10 @@ import {TestAnimation, testSchema} from './compositions/test/TestAnimation';
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Folder name="Messi-91">
+        {/* Duration = narration length: 71.39 s → 4284 frames @ 60 fps */}
+        <Composition id="Messi91-Vertical-60" component={Messi91} durationInFrames={4284} fps={60} width={1080} height={1920} />
+      </Folder>
       <Folder name="System-Test">
         <Composition id="Test-Landscape-30" component={TestAnimation} schema={testSchema} calculateMetadata={narrationMetadata(30)}
           durationInFrames={180} fps={30} width={1920} height={1080} defaultProps={{title: 'Football Motion Studio', narration: 'test-narration.mp3'}} />

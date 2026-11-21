@@ -15,6 +15,11 @@ The owner works **only from an iPhone**: every edit, preview and render happens 
 - **Controlled pacing**: allow holds. Each scene gets ≥ 2.5 s; entrances ≈ 0.9 s; stagger ≈ 0.06 s; transitions 0.6–0.9 s. Motion settles before narration moves on.
 - **Hierarchy and spacing**: 8-pt grid (`space`), safe areas from `useLayout().safe`, max 3 text levels on screen, left-aligned unless it is a centred hero moment.
 
+**Reference look (owner-supplied, Nov 2026) — now the default for productions:**
+- *Motion reference*: iOS-style UI motion on an off-white "paper" canvas (`paper` tokens, `PaperBackground`). Words fly in from different heights/scales with motion blur and lock into one line on the spoken word (`FlyWords`). Pills grow out of their icon (`Capsule`), iMessage bubbles spring from their tail (`ChatBubble`), numbers roll on an iOS picker wheel and lock (`PickerNumber`), black "island" and white cards with soft shadows (`Card`), Spotlight search bar (`SearchBar`). Fast arrival, long silky settle (`paperEase`).
+- *Photo reference*: player cut-outs with skin/hair in black & white, kit kept in colour, fine grain, soft grey offset shadow on white with a light vignette (`scripts/grade-photos.py` → `PhotoCutout`). Place cut-outs so cropped edges sit off-frame; put hero numbers *behind* the cut-out for depth.
+- The dark cinematic components (GradientBackground, GlassPanel, 3D) remain available for contrast moments.
+
 **Avoid**: generic football edit templates, cluttered layouts, lens flares, shakes, glitch, fast zoom punches, neon overload, stock "sports" fonts, more than one accent colour per scene (gold is reserved for records/trophies), drop-shadowed text, emoji.
 
 **Reference video**: the owner will supply one. When they do, study its type, colour, easing, pacing, transitions and layout, then update the **design tokens** (`src/design/tokens.ts`) and this section — never patch individual scenes to match it.
@@ -28,6 +33,15 @@ The owner works **only from an iPhone**: every edit, preview and render happens 
 - Preview with stills before full renders: `npx remotion still src/index.ts <Id> /path/out.png --frame=<n> --scale=0.5`. Check them visually.
 - Render with `npm run render -- <Id>` → `out/<Id>.mp4` (verified with ffprobe + full decode). `out/` and `*.mp4` are git-ignored: deliver MP4s to the owner with SendUserFile, not via git.
 - Be economical: no needless packages, files or re-installs. Keep explanations short and iPhone-friendly.
+
+## Production pipeline (all in the cloud)
+
+1. Narration → `public/audio/`. Word timestamps: sherpa-onnx Whisper small.en (text) + Zipformer (word times), models from k2-fsa GitHub releases (Hugging Face is blocked here); venv at `/tmp/claude-0/venv` is ephemeral — reinstall with `pip install sherpa-onnx soundfile numpy`. Save transcript to `public/data/<name>.transcript.json`, put timestamps in a `words.ts` and key every cue to them via `Scene`/`useT()` (absolute seconds).
+2. Photos → cut-outs with `rembg` model `birefnet-portrait` (one image per process, ~20 s each, ~5 GB RAM), then `python scripts/grade-photos.py *.png --out public/images/<project>`.
+3. SFX → `python scripts/make-sfx.py` (synthesised whooshes, clicks, ticks, pops, impacts, kick, net) and `<Sfx at={sec} name=… volume=…/>`. No music unless asked. Narration untouched and dominant.
+4. Preview → `node scripts/stills.mjs <Id> <dir> 0.25 "s1,s2,…"` then tile with ffmpeg and inspect.
+5. Render TikTok master → `npm run render -- <Id> --video-bitrate=20M --x264-preset=slow --audio-bitrate=320k`.
+6. TikTok safe zone (1080×1920): keep key content within y 220–1500, and clear of the right rail (x > 960, y 900–1650).
 
 ## Remotion rules (from the official Agent Skills in `.agents/skills`, linked in `.claude/skills`)
 
