@@ -26,12 +26,18 @@ The owner works **only from an iPhone**: every edit, preview and render happens 
 
 ## Workflow rules
 
+- **"Same reference" / "same style"** = the Nov 2026 reference look above; the Messi 91 film (`src/compositions/messi91/`) is the template to reuse.
+- **Sign-off**: end every production with the Apple-style end card "Produced by Shaljr" (small, bold, centred on paper, ~2.5 s after the narration; see `EndCard` in messi91/scenesB.tsx) unless told otherwise.
+- **TikTok**: videos must be ≥ 1:01 (Creator Program). Default master: 1080×1920, 60 fps, 20 Mbps.
+- **Delivery to the iPhone**: SendUserFile cards play but may not save. Also push the final MP4 to the `renders` branch with Git LFS (environment `football-motion-studio` allows lfs.github.com) and give the Safari link `https://github.com/silencator/football-motion-studio./raw/renders/<file>.mp4` (Share → Save Video).
+- **Owner-prepared inputs** (when supplied, skip those steps): transparent PNG cut-outs (iOS "Lift Subject") → just run `grade-photos.py`; a script with stats → no fact-finding; a scene/photo plan → follow it.
+
 - Do **not** start a new football video unless the owner asks for one.
 - Reuse components in `src/components`; extend the system rather than writing one-off styling. Change the look via tokens.
 - Every production registers four deliverables: `<Project>-Landscape-30`, `-Landscape-60`, `-Vertical-30`, `-Vertical-60` (1920×1080 / 1080×1920). Vertical must be re-laid out (stacked, larger relative type via `useLayout`), not just cropped.
 - Narration first: put the voice-over in `public/audio/`, run `npm run analyze -- public/audio/<file>`, then drive scene timing from the generated `public/data/<file>.timing.json` (`narrationMetadata`, `planScenes`). Scene cuts land on speech-segment boundaries.
 - Preview with stills before full renders: `npx remotion still src/index.ts <Id> /path/out.png --frame=<n> --scale=0.5`. Check them visually.
-- Render with `npm run render -- <Id>` → `out/<Id>.mp4` (verified with ffprobe + full decode). `out/` and `*.mp4` are git-ignored: deliver MP4s to the owner with SendUserFile, not via git.
+- Render with `npm run render -- <Id>` → `out/<Id>.mp4` (verified with ffprobe + full decode). `out/` and `*.mp4` are git-ignored on the main branch; deliver as described under Delivery.
 - Be economical: no needless packages, files or re-installs. Keep explanations short and iPhone-friendly.
 
 ## Production pipeline (all in the cloud)
