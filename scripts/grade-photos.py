@@ -1,6 +1,6 @@
 """Photo-reference grade for cut-outs (owner's Messi reference):
 skin & hair → monochrome, kit colours kept (saturation-gated), gentle contrast, fine grain,
-soft offset drop shadow baked in. Usage: python scripts/grade-photos.py in1.png [in2.png ...] --out public/images/messi
+soft offset drop shadow baked in. Usage: python scripts/grade-photos.py in1.png [in2.png ...] --out public/images/messi [--choke 0.003]
 Needs: numpy, pillow, scipy."""
 import sys, os, numpy as np
 from PIL import Image
@@ -8,6 +8,10 @@ from scipy.ndimage import gaussian_filter
 
 args = sys.argv[1:]; out = 'public/images'
 if '--out' in args: i = args.index('--out'); out = args[i + 1]; del args[i:i + 2]
+choke = 0.0  # --choke F: shrink the matte by F × image height (removes coloured halos from app cut-outs)
+skin_sat = 0.64  # --skin-sat S: raise (≈0.8) for warm, saturated photos whose skin stays coloured
+if '--skin-sat' in args: i = args.index('--skin-sat'); skin_sat = float(args[i + 1]); del args[i:i + 2]
+if '--choke' in args: i = args.index('--choke'); choke = float(args[i + 1]); del args[i:i + 2]
 os.makedirs(out, exist_ok=True)
 
 def rgb_to_hsv(rgb):
@@ -22,6 +26,12 @@ def smooth(x, a, b):  # smoothstep a→b
 
 for f in args:
     im = Image.open(f).convert('RGBA')
+    if choke > 0:
+        from scipy.ndimage import grey_erosion
+        a = np.array(im); r = max(1, round(choke * im.height))
+        al = grey_erosion(a[..., 3], size=(2 * r + 1, 2 * r + 1))
+        a[..., 3] = (gaussian_filter(al.astype(np.float32), r * 0.5)).clip(0, 255).astype(np.uint8)
+        im = Image.fromarray(a, 'RGBA')
     # trim to subject + margin, cap height
     a0 = np.array(im)[..., 3]; ys, xs = np.where(a0 > 8)
     pad = int(0.06 * (ys.max() - ys.min()))
@@ -30,7 +40,7 @@ for f in args:
     arr = np.asarray(im).astype(np.float32) / 255; rgb = arr[..., :3]; alpha = arr[..., 3]
     h, s, v = rgb_to_hsv(rgb)
     hue_skin = np.maximum(1 - smooth(h, 0.11, 0.15), smooth(h, 0.94, 0.97))      # reds→oranges (0–45°, 340°+)
-    sat_skin = 1 - smooth(s, 0.64, 0.80)                                          # kits are far more saturated
+    sat_skin = 1 - smooth(s, skin_sat, skin_sat + 0.16)                                          # kits are far more saturated
     skin = hue_skin * sat_skin * smooth(v, 0.12, 0.25)
     dark = (1 - smooth(v, 0.22, 0.38)) * (1 - smooth(s, 0.45, 0.7))               # hair / shadows
     m = gaussian_filter(np.clip(np.maximum(skin, dark), 0, 1), 1.2)
