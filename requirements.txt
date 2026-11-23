@@ -1,0 +1,6 @@
+sherpa-onnx
+soundfile
+numpy
+scipy
+pillow
+rembg[cpu]

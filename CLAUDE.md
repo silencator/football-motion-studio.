@@ -45,8 +45,9 @@ The owner works **only from an iPhone**: every edit, preview and render happens 
 
 ## Production pipeline (all in the cloud)
 
-1. Narration → `public/audio/`. Word timestamps: sherpa-onnx Whisper small.en (text) + Zipformer (word times), models from k2-fsa GitHub releases (Hugging Face is blocked here); venv at `/tmp/claude-0/venv` is ephemeral — reinstall with `pip install sherpa-onnx soundfile numpy`. Save transcript to `public/data/<name>.transcript.json`, put timestamps in a `words.ts` and key every cue to them via `Scene`/`useT()` (absolute seconds).
-2. Photos → cut-outs with `rembg` model `birefnet-portrait` (one image per process, ~20 s each, ~5 GB RAM), then `python scripts/grade-photos.py *.png --out public/images/<project>`.
+0. Python tools: `python3 -m venv /tmp/claude-0/venv && /tmp/claude-0/venv/bin/pip install -r requirements.txt` (ephemeral; recreate per container).
+1. Narration → `public/audio/`, then `python scripts/transcribe.py public/audio/<name>.mp3` → `public/data/<name>.transcript.json` (Whisper small.en text + Zipformer word times; models auto-download from k2-fsa GitHub releases — Hugging Face is blocked). Put timestamps in a `words.ts` and key every cue to them via `Scene`/`useT()` (absolute seconds).
+2. Photos → `python scripts/cutout.py *.jpg` (rembg `birefnet-portrait`, one process per photo, ~20 s each, ~5 GB RAM; skip if the owner sends iOS cut-outs), then `python scripts/grade-photos.py *.png --out public/images/<project>`.
 3. SFX → `python scripts/make-sfx.py` (synthesised whooshes, clicks, ticks, pops, impacts, kick, net) and `<Sfx at={sec} name=… volume=…/>`. No music unless asked. Narration untouched and dominant.
 4. Preview → `node scripts/stills.mjs <Id> <dir> 0.25 "s1,s2,…"` then tile with ffmpeg and inspect.
 5. Render TikTok master → `npm run render -- <Id> --video-bitrate=20M --x264-preset=slow --audio-bitrate=320k`.

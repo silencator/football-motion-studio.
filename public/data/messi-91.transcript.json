@@ -1,6 +1,6 @@
 [
  {
-  "start": 0,
+  "start": 0.0,
   "end": 4.25,
   "text": "In 2012, Leonin Messi scored 91 official goals.",
   "words": [
@@ -150,7 +150,7 @@
    ],
    [
     "MORE",
-    12.24
+    12.2
    ],
    [
     "THAN",
@@ -432,8 +432,12 @@
   "text": "Barcelona contributed 79 goals.",
   "words": [
    [
-    "PORCELONA",
+    "THE",
     35.31
+   ],
+   [
+    "PORCELONA",
+    35.35
    ],
    [
     "CONTRIBUTED",
@@ -464,7 +468,7 @@
    ],
    [
     "ADDED",
-    38.88
+    38.84
    ],
    [
     "ANOTHER",
@@ -557,12 +561,8 @@
     45.38
    ],
    [
-    "GERD",
+    "GERDMULLER",
     45.5
-   ],
-   [
-    "MUELLER",
-    45.86
    ],
    [
     "WHO",
@@ -582,7 +582,7 @@
    ],
    [
     "GOALS",
-    47.54
+    47.5
    ],
    [
     "IN",
@@ -609,11 +609,11 @@
   "words": [
    [
     "FORTY",
-    49.43
+    49.44
    ],
    [
     "YEARS",
-    49.91
+    49.87
    ],
    [
     "LATER",
@@ -659,7 +659,7 @@
    ],
    [
     "GOALS",
-    53.3
+    53.26
    ],
    [
     "SIXTY",
@@ -671,7 +671,7 @@
    ],
    [
     "APPEARANCES",
-    54.86
+    54.82
    ]
   ]
  },
@@ -756,11 +756,11 @@
    ],
    [
     "CONSISTENCY",
-    61.95
+    61.91
    ],
    [
     "AND",
-    62.91
+    62.87
    ],
    [
     "A",
@@ -823,7 +823,7 @@
    ],
    [
     "A",
-    67.24
+    67.28
    ],
    [
     "RECORD",
