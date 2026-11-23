@@ -20,6 +20,13 @@ The owner works **only from an iPhone**: every edit, preview and render happens 
 - *Photo reference*: player cut-outs with skin/hair in black & white, kit kept in colour, fine grain, soft grey offset shadow on white with a light vignette (`scripts/grade-photos.py` → `PhotoCutout`). Place cut-outs so cropped edges sit off-frame; put hero numbers *behind* the cut-out for depth.
 - The dark cinematic components (GradientBackground, GlassPanel, 3D) remain available for contrast moments.
 
+**Analytics style ("Mind" reference, owner-supplied Nov 2026) — default for analytics-only videos:**
+- *Look*: grey halftone paper (fine print dots, vignette) that cuts to a dark textured pitch seen from above (faint pitch lines). Black & white, high contrast; one accent per scene (gold only for records).
+- *Signature moves*: photo card with chamfered corners that splits like doors to reveal an object; symbolic halftone objects on soft shadows (brain = decision, eyeball = "watch", 3D eye via `Scene3D`) joined to cards by hairline connectors; spotlight disc + sweeping light beam on the dark pitch; small grey phrase building word by word + one huge bold word/number (`FlyWords` + slam-in number).
+- *Analytics vocabulary*: dot fields where every dot is one event (beam lights the successes), counters that count with the reveal, threshold lines/rings, lanes and passing cones on the pitch, before/after splits. Show the source line (e.g. "Opta · top 5 leagues · 2012–23") on data beats.
+- *TikTok pacing*: motion on frame 1, a new visual every 1–1.5 s for the first 5 s, then reference-style holds; loop the last line into the hook.
+- Template: `src/compositions/dribbles10/`. Objects (brain etc.) come from owner cut-outs → `grade-photos.py` + halftone.
+
 **Avoid**: generic football edit templates, cluttered layouts, lens flares, shakes, glitch, fast zoom punches, neon overload, stock "sports" fonts, more than one accent colour per scene (gold is reserved for records/trophies), drop-shadowed text, emoji.
 
 **Reference video**: the owner will supply one. When they do, study its type, colour, easing, pacing, transitions and layout, then update the **design tokens** (`src/design/tokens.ts`) and this section — never patch individual scenes to match it.
