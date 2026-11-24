@@ -46,8 +46,8 @@ export const Label: React.FC<{text: string; at: number; x: number; y: number; ex
 };
 
 /** The owner's graded Messi cut-out with soft halftone print texture. */
-export const MessiPhoto: React.FC<{at: number; x: number; y: number; w: number; exitAt?: number; z?: number; file?: string; aspect?: number; halftone?: number; fade?: number}> = ({
-  at, x, y, w, exitAt, z, file = 'messi.png', aspect = 873 / 1296, halftone = 0.3, fade,
+export const MessiPhoto: React.FC<{at: number; x: number; y: number; w: number; exitAt?: number; z?: number; file?: string; aspect?: number; halftone?: number; fade?: number; push?: number}> = ({
+  at, x, y, w, exitAt, z, file = 'messi.png', aspect = 873 / 1296, halftone = 0.3, fade, push = 0.004,
 }) => {
   const {p, t} = useT();
   const k = p(at, 0.8);
@@ -56,7 +56,7 @@ export const MessiPhoto: React.FC<{at: number; x: number; y: number; w: number; 
   const h = w * aspect;
   return (
     <div style={{position: 'absolute', left: x - w / 2, top: y - h / 2, width: w, height: h, zIndex: z, opacity: Math.min(1, k * 1.5) * (1 - out),
-      translate: `0 ${(1 - k) * 60 - out * 30}px`, ...(fade ? {WebkitMaskImage: `linear-gradient(to bottom, #000 ${fade * 100}%, transparent 100%)`, maskImage: `linear-gradient(to bottom, #000 ${fade * 100}%, transparent 100%)`} : {}), scale: String(1.04 - 0.04 * k + (t - at) * 0.004), filter: `blur(${(1 - k) * 16 + out * 12}px)`}}>
+      translate: `0 ${(1 - k) * 60 - out * 30}px`, ...(fade ? {WebkitMaskImage: `linear-gradient(to bottom, #000 ${fade * 100}%, transparent 100%)`, maskImage: `linear-gradient(to bottom, #000 ${fade * 100}%, transparent 100%)`} : {}), scale: String(1.04 - 0.04 * k + Math.max(0, t - at) * push), filter: `blur(${(1 - k) * 16 + out * 12}px)`}}>
       <Img src={src} style={{width: '100%', height: '100%'}} />
       <div style={{position: 'absolute', inset: 0, WebkitMaskImage: `url(${src})`, WebkitMaskSize: '100% 100%', maskImage: `url(${src})`, maskSize: '100% 100%', mixBlendMode: 'multiply', opacity: halftone}}>
         <Halftone color="rgba(0,0,0,0.9)" opacity={1} size={6} />
@@ -125,3 +125,40 @@ export const PaperPitch: React.FC<{k: number; y0?: number; y1?: number; goalTop?
 };
 
 export const Dot: React.FC<{x: number; y: number; r?: number; fill?: string; o?: number}> = ({x, y, r = 18, fill = GREY, o = 1}) => <circle cx={x} cy={y} r={r} fill={fill} opacity={o} />;
+
+/** Ground under a walking figure: hairline + footprints scrolling past, so the walk always travels. */
+export const Ground: React.FC<{y: number; from: number; speed?: number; o?: number}> = ({y, from, speed = 230, o = 1}) => {
+  const {t, p} = useT();
+  const off = ((t - from) * speed) % 240;
+  const k = p(from, 0.5) * o;
+  return (
+    <svg width={1080} height={1920} style={{position: 'absolute', inset: 0, opacity: k, WebkitMaskImage: 'linear-gradient(to right, transparent 0%, #000 22%, #000 78%, transparent 100%)'}}>
+      <line x1={0} y1={y} x2={1080} y2={y} stroke="rgba(29,29,31,0.22)" strokeWidth={3} />
+      {Array.from({length: 7}, (_, i) => {
+        const x = 1200 - ((i * 240 + off) % 1440);
+        return (
+          <g key={i}>
+            <line x1={x} y1={y + 18} x2={x} y2={y + 34} stroke="rgba(29,29,31,0.25)" strokeWidth={3} />
+            <ellipse cx={x + 60} cy={y - 8} rx={16} ry={7} fill="rgba(29,29,31,0.22)" />
+            <ellipse cx={x + 180} cy={y + 6} rx={16} ry={7} fill="rgba(29,29,31,0.16)" />
+          </g>
+        );
+      })}
+    </svg>
+  );
+};
+
+/** Grey "other player" sprinting past behind the walker (left → right, motion blur). */
+export const Sprinter: React.FC<{at: number; dy?: number; dur?: number; o?: number; scale?: number; id: string; render: (id: string, style: React.CSSProperties) => React.ReactNode}> = ({at, dy = 0, dur = 0.8, o = 0.35, scale = 0.85, id, render}) => {
+  const {t} = useT();
+  const k = (t - at) / dur;
+  if (k < 0 || k > 1) return null;
+  return <AbsoluteFill style={{opacity: o, filter: 'blur(3px)'}}>{render(id, {translate: `${-900 + k * 1800}px ${dy}px`, scale: String(scale)})}</AbsoluteFill>;
+};
+
+/** Slow, constant camera drift so no frame is ever static. */
+export const Drift: React.FC<{from: number; to: number; amount?: number; children: React.ReactNode}> = ({from, to, amount = 0.035, children}) => {
+  const {t} = useT();
+  const k = Math.min(1, Math.max(0, (t - from) / (to - from)));
+  return <AbsoluteFill style={{scale: String(1 + amount * k)}}>{children}</AbsoluteFill>;
+};

@@ -4,7 +4,7 @@ import {fonts, paper, paperEase} from '../../design/tokens';
 import {useT} from '../../components/ios';
 import {Walker} from '../walks5/Walks5';
 import {W} from './words';
-import {Dot, GREY, INK, Label, MessiPhoto, PaperPitch, Title} from './kit';
+import {Dot, GREY, Ground, INK, Label, MessiPhoto, PaperPitch, Title} from './kit';
 import {Eye} from './scenesA';
 
 const whiteCard: React.CSSProperties = {position: 'absolute', background: '#fff', borderRadius: 48, boxShadow: paper.shadow};
@@ -44,7 +44,7 @@ export const Pep: React.FC = () => {
 /* S9b · Inside his head: ghost rings, then everyone slides into place */
 const MAP = [{x: -230, y: -150, sx: -320, sy: 40}, {x: 120, y: -260, sx: 260, sy: -120}, {x: 260, y: 60, sx: 120, sy: 230}, {x: -90, y: 210, sx: -300, sy: 260}, {x: -270, y: 120, sx: -120, sy: -40}];
 export const MindMap: React.FC = () => {
-  const {p} = useT();
+  const {p, t: tt} = useT();
   const C = {x: 540, y: 1100};
   const disc = p(29.0, 0.8);
   return (
@@ -60,7 +60,7 @@ export const MindMap: React.FC = () => {
         {MAP.map((m, i) => {
           const ghost = p(W.already + i * 0.16, 0.35);
           const slide = p(W.willBe - 0.15 + i * 0.05, 0.45, paperEase.glide);
-          const x = C.x + m.sx + (m.x - m.sx) * slide, y = C.y + m.sy + (m.y - m.sy) * slide;
+          const x = C.x + m.sx + (m.x - m.sx) * slide + Math.sin(tt * 1.6 + i * 2) * 18 * (1 - slide), y = C.y + m.sy + (m.y - m.sy) * slide + Math.cos(tt * 1.3 + i) * 14 * (1 - slide);
           return (
             <g key={i}>
               <circle cx={C.x + m.x} cy={C.y + m.y} r={30} fill="none" stroke={INK} strokeWidth={2.5} strokeDasharray="6 6" opacity={ghost} />
@@ -115,6 +115,7 @@ export const Invisible: React.FC = () => {
   const chest = {x: 540, y: 990};
   return (
     <AbsoluteFill>
+      <Ground y={1505} from={35.6} o={1 - ghost * 0.6} />
       <AbsoluteFill style={{opacity: 1 - ghost * 0.82}}><Walker id="iv" style={{translate: '0 -10px'}} /></AbsoluteFill>
       <AbsoluteFill style={{opacity: ghost * 0.9}}><Walker id="iv2" ink="#E4E4E8" dot="#C9C9CE" shadow={false} style={{translate: '0 -10px'}} /></AbsoluteFill>
       <svg width={1080} height={1920} style={{position: 'absolute', inset: 0}}>
@@ -283,7 +284,22 @@ export const FindsHim: React.FC = () => {
         <AbsoluteFill>
           <Title small={[['Messi', W.messi], ['walks', W.walks3], ['until', W.until], ['the', 57.34], ['game', 57.5]]} top={250} smallSize={64} />
           <Title big="finds him." bigAt={W.finds} top={410} size={175} />
-          <MessiPhoto at={56.1} x={600} y={1226} w={1000} z={2} file="messi-fist.png" aspect={1200 / 864} halftone={0.18} />
+          <svg width={1080} height={1920} style={{position: 'absolute', inset: 0, zIndex: 1}}>
+            {Array.from({length: 8}, (_, i) => {
+              const a = -Math.PI * 0.95 + (i / 7) * Math.PI * 1.25;
+              const k = p(W.finds - 0.35 + i * 0.04, 0.6, paperEase.arrive);
+              const r = 1100 - 560 * k;
+              const c = {x: 640, y: 1250};
+              const x = c.x + Math.cos(a) * r, y = c.y + Math.sin(a) * r;
+              return (
+                <g key={i}>
+                  <line x1={x} y1={y} x2={x + (c.x - x) * p(W.finds + 0.1 + i * 0.03, 0.4)} y2={y + (c.y - y) * p(W.finds + 0.1 + i * 0.03, 0.4)} stroke="rgba(29,29,31,0.35)" strokeWidth={2} />
+                  <Dot x={x} y={y} r={17} fill={GREY} o={k} />
+                </g>
+              );
+            })}
+          </svg>
+          <MessiPhoto at={56.1} x={600} y={1226} w={1000} z={2} file="messi-fist.png" aspect={1200 / 864} halftone={0.18} push={0.02} />
         </AbsoluteFill>
       )}
     </AbsoluteFill>

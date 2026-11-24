@@ -5,7 +5,7 @@ import {useT} from '../../components/ios';
 import {Eyeball3D, Scene3D} from '../../components/three';
 import {Walker} from '../walks5/Walks5';
 import {W} from './words';
-import {Card, CardFill, Dot, GREY, Halftone, INK, Label, MessiPhoto, PaperPitch, Title} from './kit';
+import {Card, CardFill, Dot, GREY, Ground, Halftone, INK, Label, MessiPhoto, PaperPitch, Sprinter, Title} from './kit';
 
 /* S1–S3 · Hook: photo card → doors → walking figure → "subbed." */
 export const Hook: React.FC = () => {
@@ -15,25 +15,32 @@ export const Hook: React.FC = () => {
     <>
       <AbsoluteFill style={{background: 'radial-gradient(70% 60% at 50% 30%, #EDEDF0 0%, #D9D9DE 100%)'}} />
       <Halftone color="rgba(0,0,0,0.5)" opacity={0.06} size={6} />
-      <MessiPhoto at={0} x={560} y={1090} w={1100} />
+      <MessiPhoto at={0} x={560} y={1090} w={1100} push={0.03} />
     </>
   );
   const walkOut = p(W.subbed, 0.7, paperEase.exit);
   const fadeGrey = p(W.subbed - 0.1, 0.4);
-  const board = p(W.subbed - 0.35, 0.5);
+  const board = p(W.subbed - 0.4, 0.45);
   return (
     <AbsoluteFill>
+      {/* moving ground and the others sprinting past */}
+      <AbsoluteFill style={{opacity: 1 - p(7.05, 0.2)}}>
+        <Ground y={1478} from={W.he} />
+        {[[4.4, -60, 0.8], [4.95, -110, 0.7], [5.55, -40, 0.9]].map(([at, dy, sc]) => (
+          <Sprinter key={at} at={at} dy={dy} scale={sc} id={`sp${at}`} render={(id, style) => <Walker id={id} ink="#9A9AA0" dot="#8A8A90" shadow={false} amp={1.7} style={style} />} />
+        ))}
+      </AbsoluteFill>
       {/* the walker behind the card */}
       <AbsoluteFill style={{opacity: p(W.he - 0.2, 0.4) * (1 - fadeGrey * 0.55), translate: `${-walkOut * 700}px 0`}}>
         <Walker id="hk" style={{translate: '0 -40px'}} />
       </AbsoluteFill>
-      {/* substitution board */}
-      <div style={{position: 'absolute', left: 620, top: 820, width: 300, height: 230, borderRadius: 34, background: '#fff', boxShadow: paper.shadow,
-        opacity: board * (1 - p(7.1, 0.2)), scale: String(0.7 + 0.3 * board), translate: `0 ${(1 - board) * 40}px`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6}}>
-        <div style={{fontFamily: fonts.text, fontSize: 28, fontWeight: 700, letterSpacing: '0.16em', color: paper.text2}}>OUT</div>
-        <div style={{display: 'flex', alignItems: 'center', gap: 18}}>
-          <svg width={50} height={50}><path d="M25 44 L4 14 H46 Z" fill="#FF3B30" /></svg>
-          <div style={{fontFamily: fonts.display, fontSize: 110, fontWeight: 800, letterSpacing: '-0.05em', color: INK, lineHeight: 1}}>7</div>
+      {/* substitution board: snaps in, number flips */}
+      <div style={{position: 'absolute', left: 560, top: 720, width: 420, height: 330, borderRadius: 44, background: '#fff', boxShadow: paper.shadow,
+        opacity: board * (1 - p(7.1, 0.2)), scale: String(0.6 + 0.4 * board), translate: `0 ${(1 - board) * 60}px`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 4}}>
+        <div style={{fontFamily: fonts.text, fontSize: 34, fontWeight: 800, letterSpacing: '0.2em', color: '#FF3B30'}}>OUT</div>
+        <div style={{display: 'flex', alignItems: 'center', gap: 22, perspective: 600}}>
+          <svg width={70} height={70} style={{translate: `0 ${(1 - p(W.subbed, 0.35)) * -30}px`}}><path d="M35 62 L5 18 H65 Z" fill="#FF3B30" /></svg>
+          <div style={{fontFamily: fonts.display, fontSize: 170, fontWeight: 800, letterSpacing: '-0.05em', color: INK, lineHeight: 1, transform: `rotateX(${(1 - p(W.subbed - 0.05, 0.35)) * 90}deg)`}}>7</div>
         </div>
       </div>
       {t < W.he + 0.9 && (t < W.he - 0.12 ? <Card box={box}>{photo}</Card> : <><Card box={box} half={-1} openAt={W.he - 0.12}>{photo}</Card><Card box={box} half={1} openAt={W.he - 0.12}>{photo}</Card></>)}
@@ -47,15 +54,15 @@ export const Hook: React.FC = () => {
 /* S4 · "When Messi does it, the game starts working for him." */
 export const WorksForHim: React.FC = () => {
   const {p} = useT();
-  const head = {x: 560, y: 1200}; // centre of his head: every line runs into it, behind the hair
+  const head = {x: 565, y: 985}; // centre of his head: every line runs into it, behind the hair
   const N = 9;
   return (
     <AbsoluteFill>
       <svg width={1080} height={1920} style={{position: 'absolute', inset: 0}}>
         {Array.from({length: N}, (_, i) => {
-          const a = -Math.PI * 0.88 + (i / (N - 1)) * Math.PI * 0.76;
+          const a = -Math.PI * 0.82 + (i / (N - 1)) * Math.PI * 0.64;
           const k = p(8.5 + i * 0.07, 1.3, paperEase.glide);
-          const r0 = 900, r1 = 430;
+          const r0 = 900, r1 = 470;
           const r = r0 + (r1 - r0) * k;
           const x = head.x + Math.cos(a) * r, y = head.y + Math.sin(a) * r * 0.95;
           const line = p(9.6 + i * 0.04, 0.5);
@@ -67,9 +74,9 @@ export const WorksForHim: React.FC = () => {
           );
         })}
       </svg>
-      <MessiPhoto at={7.3} x={560} y={1565} w={940} file="messi-close.png" aspect={1152 / 896} halftone={0.18} fade={0.72} />
-      <Title small={[['When', W.when], ['Messi', 7.48], ['does', 7.88], ['it,', 8.12]]} smallSize={76} exitAt={8.42} top={330} />
-      <Title small={[['The', 8.47], ['game', W.game], ['starts', 8.87], ['working', W.working]]} big="for him." bigAt={9.75} top={200} size={210} />
+      <MessiPhoto at={7.3} x={540} y={1376} w={1060} file="messi-close.png" aspect={1152 / 896} halftone={0.18} fade={0.8} push={0.012} />
+      <Title small={[['When', W.when], ['Messi', 7.48], ['does', 7.88], ['it,', 8.12]]} smallSize={76} exitAt={8.42} top={250} />
+      <Title small={[['The', 8.47], ['game', W.game], ['starts', 8.87], ['working', W.working]]} big="for him." bigAt={9.75} top={170} size={210} />
     </AbsoluteFill>
   );
 };

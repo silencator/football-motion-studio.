@@ -4,7 +4,7 @@ import {Audio} from '@remotion/media';
 import {interFamily} from '../../design/fonts';
 import {PaperBackground, Scene} from '../../components/ios';
 import {Sfx} from '../../sfx/Sfx';
-import {Halftone} from './kit';
+import {Drift, Halftone} from './kit';
 import {Hook, WorksForHim, HipsAndEye, Mapping, POV} from './scenesA';
 import {Pep, MindMap, PartTheyHate, Invisible, HalfSecond, Goal, FiveSeconds, FindsHim, Ghost, EndCard} from './scenesB';
 import {W} from './words';
@@ -16,20 +16,20 @@ export const MessiWalks: React.FC = () => (
   <AbsoluteFill style={{fontFamily: interFamily}}>
     <PaperBackground grain={0.07} />
     <Halftone color="rgba(0,0,0,0.5)" opacity={0.06} />
-    <Scene from={0} to={7.28} enter="none" exit="blur" name="S1 hook · walks · subbed"><Hook /></Scene>
-    <Scene from={7.28} to={10.68} enter="blur" exit="rise" name="S2 works for him"><WorksForHim /></Scene>
-    <Scene from={10.68} to={16.4} enter="rise" exit="zoom" name="S3 hips · eye scan"><HipsAndEye /></Scene>
-    <Scene from={16.4} to={19.7} enter="zoom" exit="blur" name="S4 mapping"><Mapping /></Scene>
-    <Scene from={19.7} to={24.8} enter="blur" exit="rise" name="S5 POV reads"><POV /></Scene>
-    <Scene from={24.8} to={29.0} enter="rise" exit="blur" name="S6 Pep · first minutes"><Pep /></Scene>
-    <Scene from={29.0} to={33.3} enter="blur" exit="slide" name="S7 inside his head"><MindMap /></Scene>
-    <Scene from={33.3} to={35.55} enter="slide" exit="blur" name="S8 part they hate"><PartTheyHate /></Scene>
-    <Scene from={35.55} to={39.95} enter="blur" exit="blur" name="S9 invisible"><Invisible /></Scene>
-    <Scene from={39.95} to={42.95} enter="blur" exit="zoom" name="S10 half a second"><HalfSecond /></Scene>
-    <Scene from={42.95} to={48.25} enter="zoom" exit="blur" name="S11 goal"><Goal /></Scene>
-    <Scene from={48.25} to={53.85} enter="blur" exit="rise" name="S12 five seconds"><FiveSeconds /></Scene>
-    <Scene from={53.85} to={58.9} enter="rise" exit="blur" name="S13 finds him"><FindsHim /></Scene>
-    <Scene from={58.9} to={65.35} enter="blur" exit="blur" name="S14 ghost"><Ghost /></Scene>
+    <Scene from={0} to={7.28} enter="none" exit="blur" name="S1 hook · walks · subbed"><Drift from={0} to={7.28}><Hook /></Drift></Scene>
+    <Scene from={7.28} to={10.68} enter="blur" exit="rise" name="S2 works for him"><Drift from={7.28} to={10.68}><WorksForHim /></Drift></Scene>
+    <Scene from={10.68} to={16.4} enter="rise" exit="zoom" name="S3 hips · eye scan"><Drift from={10.68} to={16.4}><HipsAndEye /></Drift></Scene>
+    <Scene from={16.4} to={19.7} enter="zoom" exit="blur" name="S4 mapping"><Drift from={16.4} to={19.7}><Mapping /></Drift></Scene>
+    <Scene from={19.7} to={24.8} enter="blur" exit="rise" name="S5 POV reads"><Drift from={19.7} to={24.8}><POV /></Drift></Scene>
+    <Scene from={24.8} to={29.0} enter="rise" exit="blur" name="S6 Pep · first minutes"><Drift from={24.8} to={29.0}><Pep /></Drift></Scene>
+    <Scene from={29.0} to={33.3} enter="blur" exit="slide" name="S7 inside his head"><Drift from={29.0} to={33.3}><MindMap /></Drift></Scene>
+    <Scene from={33.3} to={35.55} enter="slide" exit="blur" name="S8 part they hate"><Drift from={33.3} to={35.55}><PartTheyHate /></Drift></Scene>
+    <Scene from={35.55} to={39.95} enter="blur" exit="blur" name="S9 invisible"><Drift from={35.55} to={39.95}><Invisible /></Drift></Scene>
+    <Scene from={39.95} to={42.95} enter="blur" exit="zoom" name="S10 half a second"><Drift from={39.95} to={42.95}><HalfSecond /></Drift></Scene>
+    <Scene from={42.95} to={48.25} enter="zoom" exit="blur" name="S11 goal"><Drift from={42.95} to={48.25}><Goal /></Drift></Scene>
+    <Scene from={48.25} to={53.85} enter="blur" exit="rise" name="S12 five seconds"><Drift from={48.25} to={53.85}><FiveSeconds /></Drift></Scene>
+    <Scene from={53.85} to={58.9} enter="rise" exit="blur" name="S13 finds him"><Drift from={53.85} to={58.9}><FindsHim /></Drift></Scene>
+    <Scene from={58.9} to={65.35} enter="blur" exit="blur" name="S14 ghost"><Drift from={58.9} to={65.35}><Ghost /></Drift></Scene>
     <Scene from={65.6} to={MESSIWALKS_DURATION_SEC + 1} enter="none" exit="none" name="End card"><EndCard /></Scene>
 
     <Audio src={staticFile('audio/messi-walks.mp3')} />
@@ -41,7 +41,9 @@ export const MessiWalks: React.FC = () => (
     <Sfx at={W.he - 0.15} name="click" volume={0.28} />
     <Sfx at={W.he - 0.1} name="whoosh-low" volume={0.35} />
     {[3.75, 4.25, 4.75, 5.25, 5.75].map((at) => <Sfx key={at} at={at} name="tick" volume={0.1} />)}
-    <Sfx at={W.subbed - 0.35} name="pop" volume={0.26} />
+    <Sfx at={W.subbed - 0.4} name="pop" volume={0.26} />
+    <Sfx at={W.subbed - 0.05} name="impact-soft" volume={0.4} />
+    {[4.4, 4.95, 5.55].map((at) => <Sfx key={`sp${at}`} at={at + 0.15} name="whoosh-fast" volume={0.2} />)}
     <Sfx at={W.subbed} name="whoosh-fast" volume={0.24} />
     <Sfx at={7.25} name="whoosh-soft" volume={0.2} />
     <Sfx at={8.5} name="whoosh-low" volume={0.22} />
@@ -89,6 +91,7 @@ export const MessiWalks: React.FC = () => (
     <Sfx at={53.82} name="whoosh-soft" volume={0.2} />
     {[54.3, 54.8, 55.3].map((at) => <Sfx key={at} at={at} name="whoosh-fast" volume={0.1} />)}
     <Sfx at={56.05} name="whoosh-low" volume={0.3} />
+    <Sfx at={W.finds - 0.3} name="whoosh-low" volume={0.28} />
     <Sfx at={W.finds} name="impact" volume={0.48} />
     <Sfx at={58.85} name="whoosh-soft" volume={0.2} />
     <Sfx at={60.5} name="whoosh-low" volume={0.3} />
