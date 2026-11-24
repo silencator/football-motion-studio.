@@ -37,7 +37,7 @@ The owner works **only from an iPhone**: every edit, preview and render happens 
 
 - **"Same reference" / "same style"** = the Nov 2026 reference look above; the Messi 91 film (`src/compositions/messi91/`) is the template to reuse.
 - **Sign-off**: end every production with the Apple-style end card "Produced by Shaljr" (small, bold, centred on paper, ~2.5 s after the narration; see `EndCard` in messi91/scenesB.tsx) unless told otherwise.
-- **TikTok**: videos must be ≥ 1:01 (Creator Program). Default master: 1080×1920, 60 fps, 20 Mbps.
+- **TikTok**: videos must be ≥ 1:01 (Creator Program). Default master: 1080×1920, 60 fps, 25 Mbps.
 - **Delivery to the iPhone**: SendUserFile cards play but may not save. Also push the final MP4 to the `renders` branch with Git LFS (environment `football-motion-studio` allows lfs.github.com) and give the Safari link `https://github.com/silencator/football-motion-studio./raw/renders/<file>.mp4` (Share → Save Video).
 - **Standing defaults (owner need not repeat them)**: reference look + motion language, synthesised SFX (whooshes, clicks, ticks, pops, impacts, kick/net) synced to motion, no music, narration untouched, 9:16 60 fps, end card, GitHub delivery link.
 - **Vary, don't copy**: keep the reference's language but design each film for its story — new layouts, new scene ideas, unused reference moves (morphing words, sideways camera pan along a sentence, timer-ring card, card with cursor tap) where they serve the text. Never a carbon copy of Messi 91.
@@ -59,7 +59,7 @@ The owner works **only from an iPhone**: every edit, preview and render happens 
 2. Photos → `python scripts/cutout.py *.jpg` (rembg `birefnet-portrait`, one process per photo, ~20 s each, ~5 GB RAM; skip if the owner sends iOS cut-outs), then `python scripts/grade-photos.py *.png --out public/images/<project>`.
 3. SFX → `python scripts/make-sfx.py` (synthesised whooshes, clicks, ticks, pops, impacts, kick, net) and `<Sfx at={sec} name=… volume=…/>`. No music unless asked. Narration untouched and dominant.
 4. Preview → `node scripts/stills.mjs <Id> <dir> 0.25 "s1,s2,…"` then tile with ffmpeg and inspect.
-5. Render TikTok master → `npm run render -- <Id> --video-bitrate=20M --x264-preset=slow --audio-bitrate=320k`.
+5. Render TikTok master → `npm run render -- <Id> --video-bitrate=25M --x264-preset=slow --audio-bitrate=320k`.
 6. TikTok safe zone (1080×1920): keep key content within y 220–1500, and clear of the right rail (x > 960, y 900–1650).
 
 ## Remotion rules (from the official Agent Skills in `.agents/skills`, linked in `.claude/skills`)
