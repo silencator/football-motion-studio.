@@ -47,7 +47,7 @@ export const Hook: React.FC = () => {
 /* S4 · "When Messi does it, the game starts working for him." */
 export const WorksForHim: React.FC = () => {
   const {p} = useT();
-  const head = {x: 590, y: 1230};
+  const head = {x: 610, y: 1160};
   const N = 9;
   return (
     <AbsoluteFill>
@@ -67,9 +67,9 @@ export const WorksForHim: React.FC = () => {
           );
         })}
       </svg>
-      <MessiPhoto at={7.3} x={560} y={1525} w={1180} />
+      <MessiPhoto at={7.3} x={560} y={1175} w={1160} file="messi-close.png" aspect={1152 / 896} halftone={0.18} />
       <Title small={[['When', W.when], ['Messi', 7.48], ['does', 7.88], ['it,', 8.12]]} smallSize={76} exitAt={8.42} top={330} />
-      <Title small={[['The', 8.47], ['game', W.game], ['starts', 8.87], ['working', W.working]]} big="for him." bigAt={9.75} top={250} />
+      <Title small={[['The', 8.47], ['game', W.game], ['starts', 8.87], ['working', W.working]]} big="for him." bigAt={9.75} top={200} size={210} />
     </AbsoluteFill>
   );
 };

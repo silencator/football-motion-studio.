@@ -48,7 +48,7 @@ export const Big: React.FC<{children: React.ReactNode; at: number; size: number;
   const out = exitAt === undefined ? 0 : p(exitAt, 0.3, paperEase.exit);
   return (
     <div style={{fontFamily: fonts.display, fontSize: size, fontWeight: 800, letterSpacing: '-0.06em', lineHeight: 0.9, color, fontVariantNumeric: 'tabular-nums',
-      opacity: Math.min(1, k * 2) * (1 - out), scale: String(1.5 - 0.5 * k + 0.025 * Math.sin(lock * Math.PI) - out * 0.1), filter: `blur(${(1 - k) * 30 + out * 18}px)`, translate: `0 ${-out * 40}px`, ...style}}>
+      opacity: Math.min(1, k * 2) * (1 - out), scale: String(1.5 - 0.5 * k + 0.025 * Math.sin(lock * Math.PI) - out * 0.1), filter: `blur(${(1 - k) * 20 + out * 14}px)`, translate: `0 ${-out * 40}px`, ...style}}>
       {children}
     </div>
   );

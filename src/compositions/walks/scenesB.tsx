@@ -18,7 +18,8 @@ export const Pep: React.FC = () => {
   const minute = Math.max(1, Math.round(1 + ring * 9));
   return (
     <AbsoluteFill>
-      <Title small={[['Pep', W.pep], ['saw', 25.13], ['it', 25.45], ['at', 25.5]]} big="Barcelona." bigAt={W.barcelona} exitAt={26.35} top={600} size={190} />
+      <MessiPhoto at={24.8} x={540} y={1350} w={820} file="pep.png" aspect={1200 / 864} halftone={0.18} exitAt={26.3} />
+      <Title small={[['Pep', W.pep], ['saw', 25.13], ['it', 25.45], ['at', 25.5]]} big="Barcelona." bigAt={W.barcelona} exitAt={26.35} top={280} size={190} />
       <div style={{...whiteCard, left: 240, top: 860, width: 600, height: 600, opacity: card, scale: String(0.9 + 0.1 * card), filter: `blur(${(1 - card) * 10}px)`}}>
         <svg width={600} height={600} style={{position: 'absolute', inset: 0}}>
           <circle cx={300} cy={300} r={R} fill="none" stroke="#EDEDF0" strokeWidth={22} />
@@ -281,8 +282,8 @@ export const FindsHim: React.FC = () => {
       {t >= 56.0 && (
         <AbsoluteFill>
           <Title small={[['Messi', W.messi], ['walks', W.walks3], ['until', W.until], ['the', 57.34], ['game', 57.5]]} top={250} smallSize={64} />
-          <Title big="finds him." bigAt={W.finds} top={760} size={175} />
-          <MessiPhoto at={56.1} x={540} y={1500} w={1300} z={2} />
+          <Title big="finds him." bigAt={W.finds} top={410} size={175} />
+          <MessiPhoto at={56.1} x={600} y={1226} w={1000} z={2} file="messi-fist.png" aspect={1200 / 864} halftone={0.18} />
         </AbsoluteFill>
       )}
     </AbsoluteFill>

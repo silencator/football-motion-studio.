@@ -6,20 +6,20 @@ import {Big, Halftone} from '../dribbles10/Dribbles10';
 
 /** Shared pieces for "Messi walks" — white/grey analytics look, authored at 1080×1920. */
 export const INK = '#1D1D1F';
-export const GREY = '#A9A9AE';
+export const GREY = '#9A9AA0';
 export const LIGHT = '#D4D4D8';
 export {Halftone, Big};
 
 type Word = [string, number];
 /** Small grey phrase built word by word + one huge word (reference type pairing). */
 export const Title: React.FC<{small?: Word[]; big?: React.ReactNode; bigAt?: number; exitAt?: number; top?: number; size?: number; smallSize?: number; strikeAt?: number}> = ({
-  small = [], big, bigAt = 0, exitAt, top = 260, size = 230, smallSize = 58, strikeAt,
+  small = [], big, bigAt = 0, exitAt, top = 260, size = 230, smallSize = 60, strikeAt,
 }) => {
   const {p} = useT();
   const strike = strikeAt === undefined ? 0 : p(strikeAt, 0.45, paperEase.glide);
   return (
     <div style={{position: 'absolute', top, left: 40, right: 40, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8}}>
-      {small.length > 0 && <FlyWords words={small.map(([text, at]) => ({text, at}))} size={smallSize} weight={600} color={paper.text2} exitAt={exitAt} maxWidth={980} />}
+      {small.length > 0 && <FlyWords words={small.map(([text, at]) => ({text, at}))} size={smallSize} weight={750} color="rgba(29,29,31,0.78)" exitAt={exitAt} maxWidth={980} style={{letterSpacing: '-0.02em'}} />}
       {big !== undefined && (
         <div style={{position: 'relative'}}>
           <Big at={bigAt} size={size} color={paper.text} exitAt={exitAt}>{big}</Big>
@@ -46,17 +46,19 @@ export const Label: React.FC<{text: string; at: number; x: number; y: number; ex
 };
 
 /** The owner's graded Messi cut-out with soft halftone print texture. */
-export const MessiPhoto: React.FC<{at: number; x: number; y: number; w: number; exitAt?: number; z?: number}> = ({at, x, y, w, exitAt, z}) => {
+export const MessiPhoto: React.FC<{at: number; x: number; y: number; w: number; exitAt?: number; z?: number; file?: string; aspect?: number; halftone?: number}> = ({
+  at, x, y, w, exitAt, z, file = 'messi.png', aspect = 873 / 1296, halftone = 0.3,
+}) => {
   const {p, t} = useT();
   const k = p(at, 0.8);
   const out = exitAt === undefined ? 0 : p(exitAt, 0.35, paperEase.exit);
-  const src = staticFile('images/walks/messi.png');
-  const h = (w * 873) / 1296;
+  const src = staticFile(`images/walks/${file}`);
+  const h = w * aspect;
   return (
     <div style={{position: 'absolute', left: x - w / 2, top: y - h / 2, width: w, height: h, zIndex: z, opacity: Math.min(1, k * 1.5) * (1 - out),
       translate: `0 ${(1 - k) * 60 - out * 30}px`, scale: String(1.04 - 0.04 * k + (t - at) * 0.004), filter: `blur(${(1 - k) * 16 + out * 12}px)`}}>
       <Img src={src} style={{width: '100%', height: '100%'}} />
-      <div style={{position: 'absolute', inset: 0, WebkitMaskImage: `url(${src})`, WebkitMaskSize: '100% 100%', maskImage: `url(${src})`, maskSize: '100% 100%', mixBlendMode: 'multiply', opacity: 0.3}}>
+      <div style={{position: 'absolute', inset: 0, WebkitMaskImage: `url(${src})`, WebkitMaskSize: '100% 100%', maskImage: `url(${src})`, maskSize: '100% 100%', mixBlendMode: 'multiply', opacity: halftone}}>
         <Halftone color="rgba(0,0,0,0.9)" opacity={1} size={6} />
       </div>
     </div>
@@ -100,10 +102,10 @@ export const PaperPitch: React.FC<{k: number; y0?: number; y1?: number; goalTop?
   const L = 2 * (860 + (y1 - y0));
   return (
     <svg width={1080} height={1920} style={{position: 'absolute', inset: 0, opacity}}>
-      <g fill="none" stroke="rgba(29,29,31,0.12)" strokeWidth={3} strokeDasharray={L} strokeDashoffset={L * (1 - k)}>
+      <g fill="none" stroke="rgba(29,29,31,0.2)" strokeWidth={3} strokeDasharray={L} strokeDashoffset={L * (1 - k)}>
         <rect x={110} y={y0} width={860} height={y1 - y0} />
       </g>
-      <g fill="none" stroke="rgba(29,29,31,0.12)" strokeWidth={3} opacity={k}>
+      <g fill="none" stroke="rgba(29,29,31,0.2)" strokeWidth={3} opacity={k}>
         {goalTop ? (
           <>
             <rect x={285} y={y0} width={510} height={209} />
