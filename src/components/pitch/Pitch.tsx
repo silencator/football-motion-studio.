@@ -24,26 +24,30 @@ export type PitchProps = {
   children?: React.ReactNode; // SVG overlays in pitch coordinates
   /** 3D tilt in degrees (CSS perspective). */
   tilt?: number;
+  /** Crop to a region in pitch metres [x, y, w, h] (landscape only), e.g. the attacking third. */
+  view?: [number, number, number, number];
+  /** Line width in metres. */
+  lineWidth?: number;
 };
 
 /** Minimal line-art pitch that draws itself; overlays use metric pitch coordinates. */
 export const Pitch: React.FC<PitchProps> = ({
-  width, drawDuration = 1.6, delay = 0, lineColor = 'rgba(255,255,255,0.55)', surface = 'glass', portrait = false, children, tilt = 0,
+  width, drawDuration = 1.6, delay = 0, lineColor = 'rgba(255,255,255,0.55)', surface = 'glass', portrait = false, children, tilt = 0, view, lineWidth = 0.3,
 }) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const p = drawDuration === 0 ? 1 : progress(frame, delay, drawDuration * fps);
-  const vbW = portrait ? PITCH_H : PITCH_W;
-  const vbH = portrait ? PITCH_W : PITCH_H;
+  const vb = view ?? [0, 0, portrait ? PITCH_H : PITCH_W, portrait ? PITCH_W : PITCH_H];
+  const [, , vbW, vbH] = vb;
   const height = (width * vbH) / vbW;
-  const line = {fill: 'none', stroke: lineColor, strokeWidth: 0.3, pathLength: 1, strokeDasharray: 1, strokeDashoffset: 1 - p} as const;
+  const line = {fill: 'none', stroke: lineColor, strokeWidth: lineWidth, pathLength: 1, strokeDasharray: 1, strokeDashoffset: 1 - p} as const;
   const fill = surface === 'grass'
     ? `linear-gradient(180deg, ${colors.pitch} 0%, ${colors.pitchDeep} 100%)`
     : surface === 'glass' ? 'linear-gradient(180deg, rgba(31,138,76,0.18) 0%, rgba(11,61,34,0.08) 100%)' : 'transparent';
   return (
     <div style={{width, height, perspective: width * 1.4}}>
       <div style={{width, height, rotate: `x ${tilt}deg`, transformStyle: 'preserve-3d', borderRadius: width * 0.012, background: fill, opacity: mix(progress(frame, delay, 0.5 * fps), 0, 1)}}>
-        <svg viewBox={`0 0 ${vbW} ${vbH}`} width={width} height={height} style={{overflow: 'visible'}}>
+        <svg viewBox={vb.join(' ')} width={width} height={height} style={{overflow: 'visible'}}>
           <g transform={portrait ? `translate(${PITCH_H} 0) rotate(90)` : undefined}>
             <rect x={0} y={0} width={PITCH_W} height={PITCH_H} {...line} />
             <path d={`M52.5 0 V68`} {...line} />
