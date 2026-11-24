@@ -4,6 +4,7 @@ import {narrationMetadata} from './audio/narration';
 import {Messi91} from './compositions/messi91/Messi91';
 import {Dribbles10} from './compositions/dribbles10/Dribbles10';
 import {Walks5} from './compositions/walks5/Walks5';
+import {Walks5Eye} from './compositions/walks5/Walks5Eye';
 import {TestAnimation, testSchema} from './compositions/test/TestAnimation';
 
 /**
@@ -25,6 +26,7 @@ export const RemotionRoot: React.FC = () => {
       <Folder name="Walks-5">
         {/* 5 s teaser + 1.5 s end card */}
         <Composition id="Walks5-Vertical-60" component={Walks5} durationInFrames={390} fps={60} width={1080} height={1920} />
+        <Composition id="Walks5Eye-Vertical-60" component={Walks5Eye} durationInFrames={390} fps={60} width={1080} height={1920} />
       </Folder>
       <Folder name="System-Test">
         <Composition id="Test-Landscape-30" component={TestAnimation} schema={testSchema} calculateMetadata={narrationMetadata(30)}

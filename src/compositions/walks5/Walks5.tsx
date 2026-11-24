@@ -23,7 +23,7 @@ const INK = '#2A2A2D';
 const deg = (d: number) => (d * Math.PI) / 180;
 const limb = (x: number, y: number, a: number, len: number) => [x + Math.sin(deg(a)) * len, y + Math.cos(deg(a)) * len] as const;
 
-const Walker: React.FC = () => {
+export const Walker: React.FC<{ink?: string; dot?: string; shadow?: boolean}> = ({ink = INK, dot = '#4A4A4F', shadow = true}) => {
   const {t} = useT();
   const ph = (t / 1.0) * 2 * Math.PI; // one stride cycle per second: an unhurried walk
   const bob = Math.abs(Math.cos(ph)) * 7;
@@ -49,12 +49,12 @@ const Walker: React.FC = () => {
     <svg width={1080} height={1920} style={{position: 'absolute', inset: 0}}>
       <defs>
         <pattern id="ht" width={7} height={7} patternUnits="userSpaceOnUse">
-          <rect width={7} height={7} fill={INK} />
-          <circle cx={3.5} cy={3.5} r={1.4} fill="#4A4A4F" />
+          <rect width={7} height={7} fill={ink} />
+          <circle cx={3.5} cy={3.5} r={1.4} fill={dot} />
         </pattern>
         <filter id="soft"><feGaussianBlur stdDeviation={18} /></filter>
       </defs>
-      <ellipse cx={560} cy={1500} rx={190} ry={22} fill="rgba(0,0,0,0.16)" filter="url(#soft)" />
+      {shadow && <ellipse cx={560} cy={1500} rx={190} ry={22} fill="rgba(0,0,0,0.16)" filter="url(#soft)" />}
       {/* far side limbs lighter for depth */}
       <path d={path([[hip.x, hip.y], Rl.knee, Rl.foot, Rl.toe])} strokeWidth={60} {...stroke(0.55)} />
       <path d={path([[sh.x, sh.y], B.el, B.hand])} strokeWidth={46} {...stroke(0.55)} />

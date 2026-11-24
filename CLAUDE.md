@@ -21,11 +21,13 @@ The owner works **only from an iPhone**: every edit, preview and render happens 
 - The dark cinematic components (GradientBackground, GlassPanel, 3D) remain available for contrast moments.
 
 **Analytics style ("Mind" reference, owner-supplied Nov 2026) — default for analytics-only videos:**
-- *Look*: grey halftone paper (fine print dots, vignette) that cuts to a dark textured pitch seen from above (faint pitch lines). Black & white, high contrast; one accent per scene (gold only for records).
-- *Signature moves*: photo card with chamfered corners that splits like doors to reveal an object; symbolic halftone objects on soft shadows (brain = decision, eyeball = "watch", 3D eye via `Scene3D`) joined to cards by hairline connectors; spotlight disc + sweeping light beam on the dark pitch; small grey phrase building word by word + one huge bold word/number (`FlyWords` + slam-in number).
-- *Analytics vocabulary*: dot fields where every dot is one event (beam lights the successes), counters that count with the reveal, threshold lines/rings, lanes and passing cones on the pitch, before/after splits. Show the source line (e.g. "Opta · top 5 leagues · 2012–23") on data beats.
-- *TikTok pacing*: motion on frame 1, a new visual every 1–1.5 s for the first 5 s, then reference-style holds; loop the last line into the hook.
-- Template: `src/compositions/dribbles10/`. Objects (brain etc.) come from owner cut-outs → `grade-photos.py` + halftone.
+- *Background*: **white paper only** (fine halftone dots, soft vignette), sometimes light grey for minimalism. **No black/dark backgrounds, no dark pitch, no dive into black** (owner, Nov 2026).
+- *Owner-approved look*: Walks5Eye stills — chamfered B&W card with a walking figure that splits like doors → realistic halftone 3D eyeball (`Eyeball3D`, `Scene3D tone="neutral"`) on paper with soft offset shadow and hairline connectors, scanning LEFT / RIGHT / BEHIND with labels. Build on this.
+- *Signature moves*: card splitting like doors to reveal an object; symbolic halftone objects on soft shadows (brain = decision, eyeball = "watch"); small grey phrase building word by word + one huge bold word/number (`FlyWords` + slam-in number); objects morph into data marks (e.g. eye shrinks into the player dot).
+- *Analytics vocabulary (on paper, in greys)*: light-grey pitch hairlines, grey disc on soft shadow, grey vision cones, dot fields where every dot is one event, counters, threshold lines/rings, lanes and passing cones, before/after splits. Source line on data beats.
+- *TikTok pacing*: motion on frame 1, a new visual every 1–1.5 s for the first 5 s, then holds; loop the last line into the hook.
+- *Process*: when the owner is sharing references/ideas, discuss only — **do not build or render until they say "start the video"**.
+- Templates: `src/compositions/walks5/Walks5Eye.tsx` (approved look), `src/compositions/dribbles10/` (dot field; its dark section is superseded). Objects come from owner cut-outs → `grade-photos.py` + halftone, or procedural 3D.
 
 **Avoid**: generic football edit templates, cluttered layouts, lens flares, shakes, glitch, fast zoom punches, neon overload, stock "sports" fonts, more than one accent colour per scene (gold is reserved for records/trophies), drop-shadowed text, emoji.
 
