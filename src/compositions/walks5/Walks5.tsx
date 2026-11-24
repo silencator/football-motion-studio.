@@ -23,32 +23,38 @@ const INK = '#2A2A2D';
 const deg = (d: number) => (d * Math.PI) / 180;
 const limb = (x: number, y: number, a: number, len: number) => [x + Math.sin(deg(a)) * len, y + Math.cos(deg(a)) * len] as const;
 
-export const Walker: React.FC<{ink?: string; dot?: string; shadow?: boolean}> = ({ink = INK, dot = '#4A4A4F', shadow = true}) => {
+export const Walker: React.FC<{ink?: string; dot?: string; shadow?: boolean; amp?: number; hips?: number; style?: React.CSSProperties; id?: string}> = ({
+  ink = INK, dot = '#4A4A4F', shadow = true, amp = 1, hips = 0, style, id = 'ht',
+}) => {
   const {t} = useT();
   const ph = (t / 1.0) * 2 * Math.PI; // one stride cycle per second: an unhurried walk
-  const bob = Math.abs(Math.cos(ph)) * 7;
+  const bob = Math.abs(Math.cos(ph)) * 7 * amp;
   const hip = {x: 540, y: 1150 - bob};
   const sh = {x: 540, y: 905 - bob};
   const leg = (s: 1 | -1) => {
-    const th = 24 * Math.sin(ph) * s;
+    const th = 24 * Math.sin(ph) * s * amp;
     const knee = limb(hip.x, hip.y, th, 175);
-    const bend = Math.max(0, Math.sin(ph + (s > 0 ? Math.PI / 2 : -Math.PI / 2))) * 38;
+    const bend = Math.max(0, Math.sin(ph + (s > 0 ? Math.PI / 2 : -Math.PI / 2))) * 38 * amp;
     const foot = limb(knee[0], knee[1], th - bend, 170);
     return {knee, foot, toe: [foot[0] + 34, foot[1]] as const};
   };
   const arm = (s: 1 | -1) => {
-    const th = -20 * Math.sin(ph) * s;
-    const el = limb(sh.x, sh.y, th, 135);
-    const hand = limb(el[0], el[1], th + 18, 120);
-    return {el, hand};
+    const th = -20 * Math.sin(ph) * s * amp;
+    const el0 = limb(sh.x, sh.y, th, 135);
+    const hand0 = limb(el0[0], el0[1], th + 18, 120);
+    // hands on hips: elbow swings back and out, hand rests on the hip
+    const el1 = [sh.x - 165 + s * 8, sh.y + 105] as const;
+    const hand1 = [hip.x - 34, hip.y - 40] as const;
+    const mix = (a: readonly [number, number], b: readonly [number, number]) => [a[0] + (b[0] - a[0]) * hips, a[1] + (b[1] - a[1]) * hips] as const;
+    return {el: mix(el0, el1), hand: mix(hand0, hand1)};
   };
   const path = (pts: readonly (readonly [number, number])[]) => 'M' + pts.map((p) => p.join(' ')).join(' L');
   const L = leg(1), Rl = leg(-1), A = arm(1), B = arm(-1);
-  const stroke = (o: number) => ({fill: 'none', stroke: 'url(#ht)', strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, opacity: o});
+  const stroke = (o: number) => ({fill: 'none', stroke: `url(#${id})`, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, opacity: o});
   return (
-    <svg width={1080} height={1920} style={{position: 'absolute', inset: 0}}>
+    <svg width={1080} height={1920} style={{position: 'absolute', inset: 0, ...style}}>
       <defs>
-        <pattern id="ht" width={7} height={7} patternUnits="userSpaceOnUse">
+        <pattern id={id} width={7} height={7} patternUnits="userSpaceOnUse">
           <rect width={7} height={7} fill={ink} />
           <circle cx={3.5} cy={3.5} r={1.4} fill={dot} />
         </pattern>
@@ -61,7 +67,7 @@ export const Walker: React.FC<{ink?: string; dot?: string; shadow?: boolean}> = 
       <path d={path([[sh.x, sh.y], [hip.x, hip.y]])} strokeWidth={118} {...stroke(1)} />
       <path d={path([[hip.x, hip.y], L.knee, L.foot, L.toe])} strokeWidth={62} {...stroke(1)} />
       <path d={path([[sh.x, sh.y], A.el, A.hand])} strokeWidth={48} {...stroke(1)} />
-      <circle cx={548} cy={790 - bob} r={66} fill="url(#ht)" />
+      <circle cx={548} cy={790 - bob} r={66} fill={`url(#${id})`} />
     </svg>
   );
 };

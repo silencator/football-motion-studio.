@@ -5,6 +5,7 @@ import {Messi91} from './compositions/messi91/Messi91';
 import {Dribbles10} from './compositions/dribbles10/Dribbles10';
 import {Walks5} from './compositions/walks5/Walks5';
 import {Walks5Eye} from './compositions/walks5/Walks5Eye';
+import {MessiWalks} from './compositions/walks/MessiWalks';
 import {TestAnimation, testSchema} from './compositions/test/TestAnimation';
 
 /**
@@ -22,6 +23,11 @@ export const RemotionRoot: React.FC = () => {
       <Folder name="Dribbles-10">
         {/* 10 s teaser + 2 s end card */}
         <Composition id="Dribbles10-Vertical-60" component={Dribbles10} durationInFrames={720} fps={60} width={1080} height={1920} />
+      </Folder>
+      <Folder name="Messi-Walks">
+        {/* 65.1 s narration + end card = 68.2 s */}
+        <Composition id="MessiWalks-Vertical-60" component={MessiWalks} durationInFrames={4092} fps={60} width={1080} height={1920} />
+        <Composition id="MessiWalks-Vertical-30" component={MessiWalks} durationInFrames={2046} fps={30} width={1080} height={1920} />
       </Folder>
       <Folder name="Walks-5">
         {/* 5 s teaser + 1.5 s end card */}
