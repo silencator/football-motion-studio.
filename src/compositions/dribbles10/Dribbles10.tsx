@@ -36,12 +36,12 @@ const DOTS = Array.from({length: N}, (_, i) => {
 const fmt = (n: number) => Math.round(n).toLocaleString('en-US');
 
 /** Fine print-style halftone dots, as in the reference's paper texture. */
-const Halftone: React.FC<{color: string; opacity: number; size?: number}> = ({color, opacity, size = 7}) => (
+export const Halftone: React.FC<{color: string; opacity: number; size?: number}> = ({color, opacity, size = 7}) => (
   <AbsoluteFill style={{opacity, backgroundImage: `radial-gradient(${color} 22%, transparent 26%)`, backgroundSize: `${size}px ${size}px`, pointerEvents: 'none'}} />
 );
 
 /** Big number with the reference's slam-in (scale down + de-blur) and a soft lock. */
-const Big: React.FC<{children: React.ReactNode; at: number; size: number; color: string; exitAt?: number; style?: React.CSSProperties}> = ({children, at, size, color, exitAt, style}) => {
+export const Big: React.FC<{children: React.ReactNode; at: number; size: number; color: string; exitAt?: number; style?: React.CSSProperties}> = ({children, at, size, color, exitAt, style}) => {
   const {p} = useT();
   const k = p(at, 0.45, paperEase.arrive);
   const lock = p(at + 0.3, 0.5, paperEase.lock);
@@ -54,7 +54,7 @@ const Big: React.FC<{children: React.ReactNode; at: number; size: number; color:
   );
 };
 
-const Stack: React.FC<{top: number; children: React.ReactNode}> = ({top, children}) => (
+export const Stack: React.FC<{top: number; children: React.ReactNode}> = ({top, children}) => (
   <div style={{position: 'absolute', top, left: 0, right: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6}}>{children}</div>
 );
 
