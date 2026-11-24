@@ -47,13 +47,13 @@ export const Hook: React.FC = () => {
 /* S4 · "When Messi does it, the game starts working for him." */
 export const WorksForHim: React.FC = () => {
   const {p} = useT();
-  const head = {x: 610, y: 1160};
+  const head = {x: 560, y: 1200}; // centre of his head: every line runs into it, behind the hair
   const N = 9;
   return (
     <AbsoluteFill>
       <svg width={1080} height={1920} style={{position: 'absolute', inset: 0}}>
         {Array.from({length: N}, (_, i) => {
-          const a = -Math.PI * 0.92 + (i / (N - 1)) * Math.PI * 0.84;
+          const a = -Math.PI * 0.88 + (i / (N - 1)) * Math.PI * 0.76;
           const k = p(8.5 + i * 0.07, 1.3, paperEase.glide);
           const r0 = 900, r1 = 430;
           const r = r0 + (r1 - r0) * k;
@@ -61,13 +61,13 @@ export const WorksForHim: React.FC = () => {
           const line = p(9.6 + i * 0.04, 0.5);
           return (
             <g key={i}>
-              <line x1={x} y1={y} x2={x + (head.x - x) * 0.72 * line} y2={y + (head.y - y) * 0.72 * line} stroke="rgba(29,29,31,0.35)" strokeWidth={2} />
+              <line x1={x} y1={y} x2={x + (head.x - x) * line} y2={y + (head.y - y) * line} stroke="rgba(29,29,31,0.35)" strokeWidth={2} />
               <Dot x={x} y={y} r={17} fill={GREY} o={p(8.4 + i * 0.07, 0.3)} />
             </g>
           );
         })}
       </svg>
-      <MessiPhoto at={7.3} x={560} y={1175} w={1160} file="messi-close.png" aspect={1152 / 896} halftone={0.18} />
+      <MessiPhoto at={7.3} x={560} y={1565} w={940} file="messi-close.png" aspect={1152 / 896} halftone={0.18} fade={0.72} />
       <Title small={[['When', W.when], ['Messi', 7.48], ['does', 7.88], ['it,', 8.12]]} smallSize={76} exitAt={8.42} top={330} />
       <Title small={[['The', 8.47], ['game', W.game], ['starts', 8.87], ['working', W.working]]} big="for him." bigAt={9.75} top={200} size={210} />
     </AbsoluteFill>

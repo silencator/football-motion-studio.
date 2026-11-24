@@ -46,8 +46,8 @@ export const Label: React.FC<{text: string; at: number; x: number; y: number; ex
 };
 
 /** The owner's graded Messi cut-out with soft halftone print texture. */
-export const MessiPhoto: React.FC<{at: number; x: number; y: number; w: number; exitAt?: number; z?: number; file?: string; aspect?: number; halftone?: number}> = ({
-  at, x, y, w, exitAt, z, file = 'messi.png', aspect = 873 / 1296, halftone = 0.3,
+export const MessiPhoto: React.FC<{at: number; x: number; y: number; w: number; exitAt?: number; z?: number; file?: string; aspect?: number; halftone?: number; fade?: number}> = ({
+  at, x, y, w, exitAt, z, file = 'messi.png', aspect = 873 / 1296, halftone = 0.3, fade,
 }) => {
   const {p, t} = useT();
   const k = p(at, 0.8);
@@ -56,7 +56,7 @@ export const MessiPhoto: React.FC<{at: number; x: number; y: number; w: number; 
   const h = w * aspect;
   return (
     <div style={{position: 'absolute', left: x - w / 2, top: y - h / 2, width: w, height: h, zIndex: z, opacity: Math.min(1, k * 1.5) * (1 - out),
-      translate: `0 ${(1 - k) * 60 - out * 30}px`, scale: String(1.04 - 0.04 * k + (t - at) * 0.004), filter: `blur(${(1 - k) * 16 + out * 12}px)`}}>
+      translate: `0 ${(1 - k) * 60 - out * 30}px`, ...(fade ? {WebkitMaskImage: `linear-gradient(to bottom, #000 ${fade * 100}%, transparent 100%)`, maskImage: `linear-gradient(to bottom, #000 ${fade * 100}%, transparent 100%)`} : {}), scale: String(1.04 - 0.04 * k + (t - at) * 0.004), filter: `blur(${(1 - k) * 16 + out * 12}px)`}}>
       <Img src={src} style={{width: '100%', height: '100%'}} />
       <div style={{position: 'absolute', inset: 0, WebkitMaskImage: `url(${src})`, WebkitMaskSize: '100% 100%', maskImage: `url(${src})`, maskSize: '100% 100%', mixBlendMode: 'multiply', opacity: halftone}}>
         <Halftone color="rgba(0,0,0,0.9)" opacity={1} size={6} />
