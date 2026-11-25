@@ -2,6 +2,8 @@ import React from 'react';
 import {Composition, Folder} from 'remotion';
 import {narrationMetadata} from './audio/narration';
 import {Messi91} from './compositions/messi91/Messi91';
+import {KickHim} from './compositions/kickhim/KickHim';
+import {KICKHIM_DURATION} from './compositions/kickhim/words';
 import {TestAnimation, testSchema} from './compositions/test/TestAnimation';
 
 /**
@@ -15,6 +17,10 @@ export const RemotionRoot: React.FC = () => {
       <Folder name="Messi-91">
         {/* 71.4 s narration + 3 s end card = 74.4 s → 4464 frames @ 60 fps */}
         <Composition id="Messi91-Vertical-60" component={Messi91} durationInFrames={4464} fps={60} width={1080} height={1920} />
+      </Folder>
+      <Folder name="Kick-Him">
+        <Composition id="KickHim-Vertical-60" component={KickHim} durationInFrames={Math.round(KICKHIM_DURATION * 60)} fps={60} width={1080} height={1920} />
+        <Composition id="KickHim-Vertical-30" component={KickHim} durationInFrames={Math.round(KICKHIM_DURATION * 30)} fps={30} width={1080} height={1920} />
       </Folder>
       <Folder name="System-Test">
         <Composition id="Test-Landscape-30" component={TestAnimation} schema={testSchema} calculateMetadata={narrationMetadata(30)}

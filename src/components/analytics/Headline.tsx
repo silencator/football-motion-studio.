@@ -8,12 +8,12 @@ import {useT} from '../ios/scene';
  */
 export type HWord = {text: string; at: number};
 
-export const Lead: React.FC<{words: HWord[]; size?: number; color?: string; exitAt?: number; caps?: boolean}> = ({words, size = 58, color = '#4A4A4F', exitAt, caps}) => {
+export const Lead: React.FC<{words: HWord[]; size?: number; color?: string; exitAt?: number; caps?: boolean; align?: 'center' | 'left'}> = ({words, size = 58, color = '#4A4A4F', exitAt, caps, align = 'center'}) => {
   const {p} = useT();
   const out = exitAt === undefined ? 0 : p(exitAt, 0.35, paperEase.exit);
   const offs = [-0.9, 0.6, -0.4, 1, -0.7, 0.5, -0.3];
   return (
-    <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', columnGap: size * (caps ? 0.4 : 0.24), maxWidth: 960, fontFamily: caps ? fonts.text : fonts.display}}>
+    <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: align === 'left' ? 'flex-start' : 'center', columnGap: size * (caps ? 0.4 : 0.24), maxWidth: 960, fontFamily: caps ? fonts.text : fonts.display}}>
       {words.map((w, i) => {
         const k = p(w.at - 0.08, 0.5);
         const o = offs[i % offs.length];
