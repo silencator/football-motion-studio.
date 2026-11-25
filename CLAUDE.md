@@ -13,6 +13,8 @@ The owner works **only from an iPhone**: every edit, preview and render happens 
 - **2D and 3D motion graphics**: SVG/CSS for data; Three.js (`Scene3D`) for hero objects and camera depth.
 - **Data storytelling**: animated statistics, timelines, maps, pitch diagrams and comparisons are first-class. Numbers count up, lines draw on, bars grow.
 - **Controlled pacing, never boring**: a new visual event (word lock, number roll, photo move, card, diagram beat) every 1.5–2 s, keyed to the narration — never a static hold longer than 2 s. Scenes may run longer but must keep evolving inside; entrances ≈ 0.9 s; stagger ≈ 0.06 s; transitions 0.6–0.9 s. Motion settles before narration moves on.
+- **Text never touches subjects**: no word may overlap a player's head, arms or body (photo cut-outs or 3D players). Text lives in its own band (normally the top, y ≈ 180–600); photos and 3D scenes sit below it (3D: `Stage3D shift` pushes the scene down). Check every still for overlaps before rendering.
+- **Full motion from frame 0**: never open on text over a plain background — the first frame is already moving (3D, photo, diagram). `MotionBackdrop` keeps the canvas alive; 3D (`components/three/kit3d`) wherever the script describes action.
 - **Hierarchy and spacing**: 8-pt grid (`space`), safe areas from `useLayout().safe`, max 3 text levels on screen, left-aligned unless it is a centred hero moment.
 
 **Reference look (owner-supplied, Nov 2026) — now the default for productions:**

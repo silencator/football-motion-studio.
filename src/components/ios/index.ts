@@ -8,3 +8,4 @@ export * from './PickerNumber';
 export * from './SearchBar';
 export * from './PhotoCutout';
 export * from './FootballIcon';
+export * from './MotionBackdrop';

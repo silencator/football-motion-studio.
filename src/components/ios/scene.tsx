@@ -22,7 +22,7 @@ export const useT = () => {
   return {t, p, fps, frame};
 };
 
-export type Transition = 'slide' | 'rise' | 'zoom' | 'blur' | 'none';
+export type Transition = 'slide' | 'rise' | 'zoom' | 'blur' | 'none' | 'whip' | 'push';
 
 const tx = (kind: Transition, k: number, dir: 1 | -1): React.CSSProperties => {
   // k: 0 = settled, 1 = fully away
@@ -30,6 +30,8 @@ const tx = (kind: Transition, k: number, dir: 1 | -1): React.CSSProperties => {
   const blur = `blur(${k * 16}px)`;
   if (kind === 'slide') return {translate: `${dir * k * 220}px 0`, opacity: 1 - k, filter: blur};
   if (kind === 'rise') return {translate: `0 ${dir * k * 180}px`, opacity: 1 - k, filter: blur};
+  if (kind === 'whip') return {translate: `${dir * k * 900}px 0`, opacity: 1 - k * k, filter: `blur(${k * 34}px)`, scale: String(1 - k * 0.06)};
+  if (kind === 'push') return {scale: String(1 + dir * k * 0.45), opacity: 1 - k, filter: `blur(${k * 28}px)`};
   if (kind === 'zoom') return {scale: String(1 + dir * k * 0.12), opacity: 1 - k, filter: blur};
   return {opacity: 1 - k, filter: blur, scale: String(1 + k * 0.03)};
 };

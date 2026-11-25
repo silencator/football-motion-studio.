@@ -1,5 +1,6 @@
 import React from 'react';
-import {AbsoluteFill} from 'remotion';
+import {AbsoluteFill, interpolate} from 'remotion';
+import {Stage3D, ShadowFloor, Token} from '../../components/three/kit3d';
 import {Star} from 'lucide-react';
 import {fonts, paper, paperEase} from '../../design/tokens';
 import {Capsule, PhotoCutout, PickerNumber, useT} from '../../components/ios';
@@ -59,40 +60,42 @@ export const S10: React.FC = () => {
   );
 };
 
-/* S11 · 34.85 "Messi played all thirty-eight league games. The only outfield player who did." */
+/* S11 · 34.85 "Messi played all thirty-eight league games. The only outfield player who did."
+   3D: a wall of 38 match tiles flips grey → black one by one while the camera glides past. */
 export const S11: React.FC = () => {
   const {p, t} = useT();
   const fillStart = W.played, fillEnd = W.games + 0.2;
   const n = Math.floor(Math.min(1, Math.max(0, (t - fillStart) / (fillEnd - fillStart))) * 38);
   const swap = W.theOnly - 0.1;
-  const shrink = p(swap, 0.6, paperEase.arrive);
+  const ent = p(34.75, 0.9, paperEase.arrive);
   return (
     <AbsoluteFill>
+      <Stage3D cam={[-3 + (t - 34.75) * 1.0, 0.5, 24]} look={[0, -0.6, 0]} fov={34} shift={380}>
+        <ShadowFloor y={-5.2} opacity={0.14} />
+        {Array.from({length: 38}, (_, i) => {
+          const c = i % 5, r = Math.floor(i / 5);
+          const at = fillStart + (i / 38) * (fillEnd - fillStart);
+          const k = interpolate(t, [at - 0.05, at + 0.3], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: paperEase.arrive});
+          const appear = interpolate(t, [34.75 + i * 0.012, 35.25 + i * 0.012], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: paperEase.arrive});
+          return (
+            <mesh key={i} position={[(c - 2) * 1.15, (3.5 - r) * 1.15 - 0.4 + (1 - appear) * -3, (1 - ent) * -4]} rotation={[k * Math.PI, 0, 0]} scale={appear} castShadow>
+              <boxGeometry args={[1, 1, 0.16]} />
+              <meshStandardMaterial color={k > 0.5 ? '#1D1D1F' : '#DCDCE1'} roughness={0.45} />
+            </mesh>
+          );
+        })}
+      </Stage3D>
       <div style={{opacity: 1 - p(swap, 0.3, paperEase.exit)}}>
-        <Headline lead={[{text: 'Messi', at: W.messi2}, {text: 'played', at: W.played}, {text: 'all', at: W.all}]} />
+        <Abs top={180}><Lead words={[{text: 'Messi', at: W.messi2}, {text: 'played', at: W.played}, {text: 'all', at: W.all}]} /></Abs>
       </div>
-      <Abs top={300 + 0}>
-        <div style={{display: 'flex', alignItems: 'baseline', gap: 10, opacity: p(W.thirty - 0.1, 0.3), translate: `0 ${-shrink * 20}px`}}>
+      <Abs top={250}>
+        <div style={{display: 'flex', alignItems: 'baseline', gap: 10, opacity: p(W.thirty - 0.1, 0.3)}}>
           <span style={{fontFamily: fonts.display, fontSize: 200, fontWeight: 800, letterSpacing: '-0.06em', color: paper.text, fontVariantNumeric: 'tabular-nums'}}>{n}</span>
           <span style={{fontFamily: fonts.display, fontSize: 90, fontWeight: 700, letterSpacing: '-0.04em', color: paper.text3}}>/38</span>
         </div>
       </Abs>
-      <div style={{position: 'absolute', top: 640, left: 120, width: 840, display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 18}}>
-        {Array.from({length: 42}, (_, i) => {
-          const on = i < n;
-          const valid = i < 38;
-          const k = on ? Math.min(1, (t - (fillStart + (i / 38) * (fillEnd - fillStart))) / 0.25) : 0;
-          return (
-            <div key={i} style={{height: 104, borderRadius: 26, background: !valid ? 'transparent' : on ? paper.text : '#E3E3E8', display: 'grid', placeItems: 'center', scale: String(on ? 0.85 + 0.15 * Math.min(1, k) : 1), opacity: valid ? p(W.messi2 + i * 0.008, 0.4) : 0}}>
-              {on && <svg width={40} height={40} viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" /></svg>}
-            </div>
-          );
-        })}
-      </div>
-      <Abs top={1360}>
-        <Capsule at={W.only} label="The only outfield player" variant="island" size={36} />
-      </Abs>
-      <Abs top={1490}><Lead words={[{text: 'who', at: W.who2}, {text: 'did.', at: W.did2}]} size={60} /></Abs>
+      <Abs top={500}><Capsule at={W.only} label="The only outfield player" variant="island" size={34} /></Abs>
+      <Abs top={600}><Lead words={[{text: 'who', at: W.who2}, {text: 'did.', at: W.did2}]} size={56} /></Abs>
     </AbsoluteFill>
   );
 };
@@ -124,35 +127,35 @@ export const S12: React.FC = () => {
   );
 };
 
-/* S13 · 44.55 (night) "Twenty-three fouls. Eight on Messi." */
+/* S13 · 44.55 (night) "Twenty-three fouls. Eight on Messi." — 23 3D tokens drop on the dark floor; 8 ignite red. */
 export const S13: React.FC = () => {
   const {p, t} = useT();
-  const drop = (i: number) => W.twentyThree - 0.1 + i * 0.045;
   const onMessi = [1, 4, 6, 9, 13, 15, 18, 21];
   const lit = p(W.eight2 - 0.05, 0.4, paperEase.arrive);
   const count8 = Math.min(8, Math.floor(Math.max(0, (t - W.eight2 + 0.05) / 0.06)));
   return (
     <AbsoluteFill>
-      <Abs top={250}>
+      <Stage3D cam={[Math.sin((t - 44.5) * 0.35) * 5, 9, 11]} look={[0, 0, 0.3]} fov={34} dark shift={420}>
+        <ShadowFloor opacity={0.5} />
+        {Array.from({length: 23}, (_, i) => {
+          const c = i % 6, r = Math.floor(i / 6);
+          const at = W.twentyThree - 0.1 + i * 0.045;
+          const k = interpolate(t, [at, at + 0.45], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: (x) => 1 - (1 - x) * (1 - x)});
+          if (k <= 0) return null;
+          const mine = onMessi.includes(i);
+          return <Token key={i} position={[(c - 2.5) * 1.2, 0.08 + (1 - k) * 4, (r - 1.5) * 1.2]} rotation={[(1 - k) * 2, i * 0.7, 0]} color={mine && lit > 0 ? red : '#5A5A60'} glow={mine ? lit * 0.9 : 0} r={0.45} h={0.16} />;
+        })}
+      </Stage3D>
+      <Abs top={200}>
         <div style={{display: 'flex', alignItems: 'center', gap: 26}}>
-          <PickerNumber from={0} to={23} start={W.twentyThree - 0.25} lockAt={W.three + 0.2} size={250} band={false} dark ticks={false} />
+          <PickerNumber from={0} to={23} start={W.twentyThree - 0.25} lockAt={W.three + 0.2} size={230} band={false} dark ticks={false} />
           <span style={{fontFamily: fonts.display, fontSize: 80, fontWeight: 700, color: 'rgba(245,245,247,0.55)', letterSpacing: '-0.03em', opacity: p(W.fouls2, 0.4)}}>fouls</span>
         </div>
       </Abs>
-      <div style={{position: 'absolute', top: 880, left: 130, width: 820, display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 34, justifyItems: 'center'}}>
-        {Array.from({length: 23}, (_, i) => {
-          const k = p(drop(i), 0.45, paperEase.arrive);
-          const mine = onMessi.includes(i);
-          return (
-            <div key={i} style={{width: 92, height: 92, borderRadius: 92, background: mine ? `rgba(255,59,48,${lit})` : 'rgba(245,245,247,0.16)', boxShadow: mine && lit > 0 ? `0 0 ${40 * lit}px rgba(255,59,48,${0.6 * lit})` : undefined,
-              border: '3px solid rgba(245,245,247,0.25)', opacity: Math.min(1, k * 2) * (mine ? 1 : 1 - lit * 0.55), translate: `0 ${(1 - k) * -120}px`, scale: String(mine ? 1 + lit * 0.08 : 1 - lit * 0.1)}} />
-          );
-        })}
-      </div>
-      <Abs top={1370}>
+      <Abs top={590}>
         <div style={{display: 'flex', alignItems: 'baseline', gap: 22, opacity: lit, filter: `blur(${(1 - lit) * 10}px)`}}>
-          <span style={{fontFamily: fonts.display, fontSize: 150, fontWeight: 800, color: red, letterSpacing: '-0.05em', fontVariantNumeric: 'tabular-nums'}}>{count8}</span>
-          <span style={{fontFamily: fonts.display, fontSize: 80, fontWeight: 700, color: night, letterSpacing: '-0.03em'}}>on Messi.</span>
+          <span style={{fontFamily: fonts.display, fontSize: 130, fontWeight: 800, color: red, letterSpacing: '-0.05em', fontVariantNumeric: 'tabular-nums'}}>{count8}</span>
+          <span style={{fontFamily: fonts.display, fontSize: 72, fontWeight: 700, color: night, letterSpacing: '-0.03em'}}>on Messi.</span>
         </div>
       </Abs>
     </AbsoluteFill>
@@ -166,7 +169,7 @@ export const S14: React.FC = () => {
       <Abs top={250}><Lead words={[{text: 'And', at: W.and2}, {text: 'he', at: W.and2 + 0.08}, {text: 'scored', at: W.scored}, {text: 'the', at: W.goal - 0.1}, {text: 'goal', at: W.goal}]} size={64} /></Abs>
       <Abs top={340}><Lead words={[{text: 'that', at: W.thatW}, {text: 'won', at: W.won}, {text: 'the', at: W.league2 - 0.12}]} size={64} /></Abs>
       <Abs top={470}><BigWord text="league." at={W.league2} size={300} gradient={gold} /></Abs>
-      <PhotoCutout src={img('pointing')} at={W.and2} until={49.6} height={1220} bottom={-70} x={0} from="below" drift={40} />
+      <PhotoCutout src={img('pointing')} at={W.and2} until={49.6} height={1150} bottom={-260} x={0} from="below" drift={40} />
     </AbsoluteFill>
   );
 };
@@ -207,10 +210,25 @@ export const S16: React.FC = () => {
   return (
     <AbsoluteFill>
       <div style={{opacity: 1 - outA, filter: `blur(${outA * 12}px)`}}>
-        <Headline lead={[{text: 'Every', at: W.every2}, {text: 'foul', at: W.foul}, {text: 'was', at: W.wasA}, {text: 'a', at: W.wasA + 0.1}]} word={{text: 'confession.', at: W.confession}} top={700} size={175} />
+        <Headline lead={[{text: 'Every', at: W.every2}, {text: 'foul', at: W.foul}, {text: 'was', at: W.wasA}, {text: 'a', at: W.wasA + 0.1}]} word={{text: 'confession.', at: W.confession}} top={220} size={175} />
       </div>
+      {/* 3D referee card: tumbles in on "foul", hangs, then drops flat on "lost" */}
+      <Stage3D cam={[0, 1.4, 7]} look={[0, 0.9, 0]} fov={32} shift={330}>
+        <ShadowFloor opacity={0.2} />
+        {(() => {
+          const inK = p(W.foul - 0.2, 0.9, paperEase.arrive);
+          const drop = p(W.lost - 0.1, 0.6, (x) => x * x);
+          const y = 1.4 + (1 - inK) * 4 - drop * 1.32;
+          return (
+            <mesh position={[0, y, 0]} rotation={[-drop * Math.PI / 2 + Math.sin(t * 1.3) * 0.12 * (1 - drop), (1 - inK) * 3 + Math.sin(t * 0.8) * 0.5 * (1 - drop), (1 - inK) * 0.6]} castShadow>
+              <boxGeometry args={[1.1, 1.6, 0.05]} />
+              <meshStandardMaterial color={red} roughness={0.35} />
+            </mesh>
+          );
+        })()}
+      </Stage3D>
       {t > swap && (
-        <Headline lead={[{text: 'The', at: W.theD}, {text: 'defender', at: W.defender2}, {text: 'had', at: W.hadA}, {text: 'already', at: W.already2}]} word={{text: 'lost.', at: W.lost}} top={700} size={300} />
+        <Headline lead={[{text: 'The', at: W.theD}, {text: 'defender', at: W.defender2}, {text: 'had', at: W.hadA}, {text: 'already', at: W.already2}]} word={{text: 'lost.', at: W.lost}} top={200} size={270} />
       )}
     </AbsoluteFill>
   );
