@@ -16,7 +16,7 @@ const Night: React.FC = () => {
   return <AbsoluteFill style={{background: 'radial-gradient(80% 60% at 50% 42%, #1C1C1F 0%, #0B0B0D 70%)', opacity: k}} />;
 };
 
-/** Slow handheld-free camera drift over the whole film so no frame is ever static. */
+/** Slow camera drift over the whole film so no frame is ever static. */
 const Drift: React.FC<{children: React.ReactNode}> = ({children}) => {
   const {t} = useT();
   return <AbsoluteFill style={{scale: String(1.02 + 0.012 * Math.sin(t * 0.45)), translate: `${6 * Math.sin(t * 0.31)}px ${5 * Math.cos(t * 0.27)}px`}}>{children}</AbsoluteFill>;
@@ -28,23 +28,23 @@ export const KickHim: React.FC = () => (
     <MotionBackdrop />
     <Night />
     <Drift>
-    <Scene from={0} to={5.95} enter="none" exit="push" name="S1 the plan"><S1 /></Scene>
-    <Scene from={5.95} to={9.2} enter="push" exit="whip" name="S2 2014-15"><S2 /></Scene>
-    <Scene from={9.2} to={12.1} enter="whip" exit="push" name="S3 already there"><S3 /></Scene>
-    <Scene from={12.1} to={15.6} enter="push" exit="whip" name="S4 foul map"><S4 /></Scene>
-    <Scene from={15.6} to={19.55} enter="whip" exit="push" name="S5 ninety"><S5 /></Scene>
-    <Scene from={19.55} to={21.2} enter="push" exit="whip" name="S6 did it work"><S6 /></Scene>
-    <Scene from={21.2} to={24.4} enter="whip" exit="push" name="S7 back at them"><S7 /></Scene>
-    <Scene from={24.4} to={28.95} enter="push" exit="whip" name="S8 4.6 dribbles"><S8 /></Scene>
-    <Scene from={28.95} to={33.3} enter="whip" exit="push" name="S9 floor"><S9 /></Scene>
-    <Scene from={33.3} to={34.75} enter="push" exit="whip" name="S10 break"><S10 /></Scene>
-    <Scene from={34.75} to={39.5} enter="whip" exit="push" name="S11 38 of 38"><S11 /></Scene>
-    <Scene from={39.5} to={44.55} enter="push" exit="whip" name="S12 the night"><S12 /></Scene>
-    <Scene from={44.55} to={47.2} enter="whip" exit="push" name="S13 23 / 8"><S13 /></Scene>
-    <Scene from={47.2} to={49.4} enter="push" exit="whip" name="S14 league"><S14 /></Scene>
-    <Scene from={49.4} to={53.2} enter="whip" exit="push" name="S15 90 38 0"><S15 /></Scene>
-    <Scene from={53.2} to={57.25} enter="push" exit="whip" name="S16 confession"><S16 /></Scene>
-    <Scene from={57.25} to={60.95} enter="whip" exit="push" name="S17 never stopped"><S17 /></Scene>
+    <Scene from={0} to={5.95} enter="none" exit="blur" name="S1 the plan"><S1 /></Scene>
+    <Scene from={5.95} to={9.2} enter="blur" exit="rise" name="S2 2014-15"><S2 /></Scene>
+    <Scene from={9.2} to={12.1} enter="rise" exit="zoom" name="S3 already there"><S3 /></Scene>
+    <Scene from={12.1} to={15.6} enter="zoom" exit="blur" name="S4 foul map"><S4 /></Scene>
+    <Scene from={15.6} to={19.55} enter="blur" exit="zoom" name="S5 ninety"><S5 /></Scene>
+    <Scene from={19.55} to={21.2} enter="zoom" exit="blur" name="S6 did it work"><S6 /></Scene>
+    <Scene from={21.2} to={24.4} enter="blur" exit="slide" name="S7 back at them"><S7 /></Scene>
+    <Scene from={24.4} to={28.95} enter="slide" exit="rise" name="S8 4.6 dribbles"><S8 /></Scene>
+    <Scene from={28.95} to={33.3} enter="rise" exit="blur" name="S9 floor"><S9 /></Scene>
+    <Scene from={33.3} to={34.75} enter="blur" exit="zoom" name="S10 break"><S10 /></Scene>
+    <Scene from={34.75} to={39.5} enter="zoom" exit="blur" name="S11 38 of 38"><S11 /></Scene>
+    <Scene from={39.5} to={44.55} enter="blur" exit="zoom" name="S12 the night"><S12 /></Scene>
+    <Scene from={44.55} to={47.2} enter="zoom" exit="blur" name="S13 23 / 8"><S13 /></Scene>
+    <Scene from={47.2} to={49.4} enter="blur" exit="rise" name="S14 league"><S14 /></Scene>
+    <Scene from={49.4} to={53.2} enter="rise" exit="blur" name="S15 90 38 0"><S15 /></Scene>
+    <Scene from={53.2} to={57.25} enter="blur" exit="slide" name="S16 confession"><S16 /></Scene>
+    <Scene from={57.25} to={60.95} enter="slide" exit="blur" name="S17 never stopped"><S17 /></Scene>
     </Drift>
     <Scene from={END_CARD_AT} to={KICKHIM_DURATION + 1} enter="none" exit="none" name="End card"><EndCard /></Scene>
 
