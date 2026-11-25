@@ -1,0 +1,868 @@
+[
+ {
+  "start": 0.0,
+  "end": 2.48,
+  "text": "Defenders had one plan for Lionel Messi.",
+  "words": [
+   [
+    "THE",
+    0.0
+   ],
+   [
+    "DEFENDERS",
+    0.08
+   ],
+   [
+    "HAD",
+    0.6
+   ],
+   [
+    "ONE",
+    0.8
+   ],
+   [
+    "PLAN",
+    1.12
+   ],
+   [
+    "FOR",
+    1.44
+   ],
+   [
+    "LEONEL",
+    1.68
+   ],
+   [
+    "MESSY",
+    2.08
+   ]
+  ]
+ },
+ {
+  "start": 2.74,
+  "end": 3.54,
+  "text": "Follow him.",
+  "words": [
+   [
+    "FOLLOW",
+    2.69
+   ],
+   [
+    "HIM",
+    3.33
+   ]
+  ]
+ },
+ {
+  "start": 3.96,
+  "end": 4.86,
+  "text": "And when that fails...",
+  "words": [
+   [
+    "AND",
+    3.91
+   ],
+   [
+    "WHEN",
+    3.99
+   ],
+   [
+    "THAT",
+    4.15
+   ],
+   [
+    "FAILS",
+    4.39
+   ]
+  ]
+ },
+ {
+  "start": 5.22,
+  "end": 5.67,
+  "text": "Kick him.",
+  "words": [
+   [
+    "TAKE",
+    5.17
+   ],
+   [
+    "HIM",
+    5.45
+   ]
+  ]
+ },
+ {
+  "start": 6.16,
+  "end": 7.7,
+  "text": "2014-15",
+  "words": [
+   [
+    "TWENTY",
+    6.11
+   ],
+   [
+    "FOURTEEN",
+    6.43
+   ],
+   [
+    "FIFTY",
+    7.07
+   ]
+  ]
+ },
+ {
+  "start": 8.03,
+  "end": 8.9,
+  "text": "One Season",
+  "words": [
+   [
+    "ONE",
+    7.98
+   ],
+   [
+    "SEASON",
+    8.34
+   ]
+  ]
+ },
+ {
+  "start": 9.37,
+  "end": 12.03,
+  "text": "Every time he turned, someone was already there.",
+  "words": [
+   [
+    "EVERY",
+    9.32
+   ],
+   [
+    "TIME",
+    9.64
+   ],
+   [
+    "HE",
+    9.92
+   ],
+   [
+    "TURNED",
+    10.16
+   ],
+   [
+    "SOMEONE",
+    10.56
+   ],
+   [
+    "WAS",
+    11.04
+   ],
+   [
+    "ALREADY",
+    11.24
+   ],
+   [
+    "THERE",
+    11.8
+   ]
+  ]
+ },
+ {
+  "start": 12.25,
+  "end": 19.38,
+  "text": "Shirts pulled, ankles clipped, shoulders in the back. 90 fouls in La Liga, more than 2 every game.",
+  "words": [
+   [
+    "SHIRTS",
+    12.2
+   ],
+   [
+    "PULLED",
+    12.84
+   ],
+   [
+    "ANKLES",
+    13.32
+   ],
+   [
+    "CLIPPED",
+    13.88
+   ],
+   [
+    "SHOULDERS",
+    14.4
+   ],
+   [
+    "IN",
+    14.92
+   ],
+   [
+    "THE",
+    15.04
+   ],
+   [
+    "BACK",
+    15.24
+   ],
+   [
+    "NINETY",
+    15.8
+   ],
+   [
+    "FOWLS",
+    16.44
+   ],
+   [
+    "IN",
+    16.92
+   ],
+   [
+    "LAGA",
+    17.04
+   ],
+   [
+    "MORE",
+    17.72
+   ],
+   [
+    "THAN",
+    18.0
+   ],
+   [
+    "TWO",
+    18.24
+   ],
+   [
+    "EVERY",
+    18.64
+   ],
+   [
+    "GAME",
+    19.0
+   ]
+  ]
+ },
+ {
+  "start": 19.79,
+  "end": 20.93,
+  "text": "So did it work?",
+  "words": [
+   [
+    "SO",
+    19.74
+   ],
+   [
+    "DID",
+    20.06
+   ],
+   [
+    "IT",
+    20.38
+   ],
+   [
+    "WORK",
+    20.62
+   ]
+  ]
+ },
+ {
+  "start": 21.36,
+  "end": 22.42,
+  "text": "Here's the strange part.",
+  "words": [
+   [
+    "HERE'S",
+    21.31
+   ],
+   [
+    "THE",
+    21.59
+   ],
+   [
+    "STRANGE",
+    21.75
+   ],
+   [
+    "PART",
+    22.19
+   ]
+  ]
+ },
+ {
+  "start": 22.73,
+  "end": 24.21,
+  "text": "He ran straight back at them.",
+  "words": [
+   [
+    "HE",
+    22.68
+   ],
+   [
+    "RAN",
+    22.84
+   ],
+   [
+    "STRAIGHT",
+    23.12
+   ],
+   [
+    "BACK",
+    23.56
+   ],
+   [
+    "AT",
+    23.84
+   ],
+   [
+    "THEM",
+    24.04
+   ]
+  ]
+ },
+ {
+  "start": 24.59,
+  "end": 26.91,
+  "text": "4.6 completed dribbles a game.",
+  "words": [
+   [
+    "FOUR",
+    24.54
+   ],
+   [
+    "POINT",
+    24.9
+   ],
+   [
+    "SIX",
+    25.22
+   ],
+   [
+    "COMPLETED",
+    25.58
+   ],
+   [
+    "DRIBBLES",
+    26.06
+   ],
+   [
+    "A",
+    26.54
+   ],
+   [
+    "GAME",
+    26.7
+   ]
+  ]
+ },
+ {
+  "start": 27.14,
+  "end": 28.77,
+  "text": "more than anyone in La Liga.",
+  "words": [
+   [
+    "MORE",
+    27.09
+   ],
+   [
+    "THAN",
+    27.33
+   ],
+   [
+    "ANY",
+    27.57
+   ],
+   [
+    "ONE",
+    27.85
+   ],
+   [
+    "IN",
+    28.05
+   ],
+   [
+    "LALEIGA",
+    28.21
+   ]
+  ]
+ },
+ {
+  "start": 29.12,
+  "end": 32.92,
+  "text": "In the Champions League semi-final, it was a Bayern defender who ended up on the floor.",
+  "words": [
+   [
+    "IN",
+    29.07
+   ],
+   [
+    "THE",
+    29.15
+   ],
+   [
+    "CHAMPIONS",
+    29.23
+   ],
+   [
+    "LEAGUE",
+    29.71
+   ],
+   [
+    "SEMI",
+    29.91
+   ],
+   [
+    "FINAL",
+    30.19
+   ],
+   [
+    "IT",
+    30.59
+   ],
+   [
+    "WAS",
+    30.75
+   ],
+   [
+    "A",
+    30.87
+   ],
+   [
+    "BYRON",
+    30.99
+   ],
+   [
+    "DEFENDER",
+    31.35
+   ],
+   [
+    "WHO",
+    31.75
+   ],
+   [
+    "ENDED",
+    31.91
+   ],
+   [
+    "UP",
+    32.23
+   ],
+   [
+    "ON",
+    32.35
+   ],
+   [
+    "THE",
+    32.47
+   ],
+   [
+    "FLOOR",
+    32.59
+   ]
+  ]
+ },
+ {
+  "start": 33.33,
+  "end": 34.6,
+  "text": "Most players would break.",
+  "words": [
+   [
+    "MOST",
+    33.28
+   ],
+   [
+    "PLAYERS",
+    33.56
+   ],
+   [
+    "WOULD",
+    34.0
+   ],
+   [
+    "BREAK",
+    34.16
+   ]
+  ]
+ },
+ {
+  "start": 34.95,
+  "end": 37.31,
+  "text": "Messi played all 38 league games.",
+  "words": [
+   [
+    "MESSIE",
+    34.9
+   ],
+   [
+    "PLAYED",
+    35.34
+   ],
+   [
+    "ALL",
+    35.7
+   ],
+   [
+    "THIRTY",
+    35.98
+   ],
+   [
+    "EIGHT",
+    36.38
+   ],
+   [
+    "LEAGUE",
+    36.58
+   ],
+   [
+    "GAMES",
+    36.94
+   ]
+  ]
+ },
+ {
+  "start": 37.51,
+  "end": 39.28,
+  "text": "the only outfield player who did.",
+  "words": [
+   [
+    "THE",
+    37.46
+   ],
+   [
+    "ONLY",
+    37.7
+   ],
+   [
+    "OUTFIELD",
+    37.98
+   ],
+   [
+    "PLAYER",
+    38.54
+   ],
+   [
+    "WHO",
+    38.9
+   ],
+   [
+    "DID",
+    39.1
+   ]
+  ]
+ },
+ {
+  "start": 39.72,
+  "end": 41.6,
+  "text": "Then came the night that mattered most.",
+  "words": [
+   [
+    "THEN",
+    39.67
+   ],
+   [
+    "CAME",
+    39.91
+   ],
+   [
+    "THE",
+    40.15
+   ],
+   [
+    "KNIGHT",
+    40.35
+   ],
+   [
+    "THAT",
+    40.59
+   ],
+   [
+    "MATTERED",
+    40.79
+   ],
+   [
+    "MOST",
+    41.23
+   ]
+  ]
+ },
+ {
+  "start": 41.93,
+  "end": 42.88,
+  "text": "Atletico Madrid",
+  "words": [
+   [
+    "AT",
+    41.88
+   ],
+   [
+    "LETTICO",
+    42.04
+   ],
+   [
+    "MARRIED",
+    42.44
+   ]
+  ]
+ },
+ {
+  "start": 43.19,
+  "end": 44.38,
+  "text": "the title on the line.",
+  "words": [
+   [
+    "THE",
+    43.14
+   ],
+   [
+    "TITLE",
+    43.3
+   ],
+   [
+    "ON",
+    43.78
+   ],
+   [
+    "THE",
+    43.94
+   ],
+   [
+    "LINE",
+    44.1
+   ]
+  ]
+ },
+ {
+  "start": 44.76,
+  "end": 45.96,
+  "text": "23 fouls",
+  "words": [
+   [
+    "TWENTY",
+    44.71
+   ],
+   [
+    "THREE",
+    45.15
+   ],
+   [
+    "FOWLS",
+    45.43
+   ]
+  ]
+ },
+ {
+  "start": 46.22,
+  "end": 47.04,
+  "text": "8 on Messi.",
+  "words": [
+   [
+    "EIGHT",
+    46.17
+   ],
+   [
+    "ON",
+    46.45
+   ],
+   [
+    "MESSEY",
+    46.65
+   ]
+  ]
+ },
+ {
+  "start": 47.38,
+  "end": 49.3,
+  "text": "and he scored the goal that won the league.",
+  "words": [
+   [
+    "AND",
+    47.33
+   ],
+   [
+    "HE",
+    47.41
+   ],
+   [
+    "SCORED",
+    47.57
+   ],
+   [
+    "THE",
+    47.93
+   ],
+   [
+    "GOAL",
+    48.05
+   ],
+   [
+    "THAT",
+    48.33
+   ],
+   [
+    "WON",
+    48.53
+   ],
+   [
+    "THE",
+    48.77
+   ],
+   [
+    "LEAK",
+    48.97
+   ]
+  ]
+ },
+ {
+  "start": 49.64,
+  "end": 51.92,
+  "text": "90 fouls, 38 games,",
+  "words": [
+   [
+    "NINETY",
+    49.59
+   ],
+   [
+    "FOWLS",
+    50.11
+   ],
+   [
+    "THIRTY",
+    50.71
+   ],
+   [
+    "EIGHT",
+    51.19
+   ],
+   [
+    "GAMES",
+    51.47
+   ]
+  ]
+ },
+ {
+  "start": 52.11,
+  "end": 53.04,
+  "text": "Zero missed.",
+  "words": [
+   [
+    "ZERO",
+    52.06
+   ],
+   [
+    "MIST",
+    52.62
+   ]
+  ]
+ },
+ {
+  "start": 53.4,
+  "end": 55.08,
+  "text": "Every fowl was a confession.",
+  "words": [
+   [
+    "EVERY",
+    53.35
+   ],
+   [
+    "FOWL",
+    53.75
+   ],
+   [
+    "WAS",
+    54.19
+   ],
+   [
+    "A",
+    54.35
+   ],
+   [
+    "CONFESSION",
+    54.47
+   ]
+  ]
+ },
+ {
+  "start": 55.44,
+  "end": 57.15,
+  "text": "the defender had already lost.",
+  "words": [
+   [
+    "THE",
+    55.39
+   ],
+   [
+    "DEFENDER",
+    55.47
+   ],
+   [
+    "HAD",
+    56.03
+   ],
+   [
+    "ALREADY",
+    56.19
+   ],
+   [
+    "LOST",
+    56.75
+   ]
+  ]
+ },
+ {
+  "start": 57.44,
+  "end": 58.26,
+  "text": "They followed him.",
+  "words": [
+   [
+    "THEY",
+    57.39
+   ],
+   [
+    "FOLLOWED",
+    57.59
+   ],
+   [
+    "HIM",
+    58.03
+   ]
+  ]
+ },
+ {
+  "start": 58.47,
+  "end": 59.15,
+  "text": "They kicked him.",
+  "words": [
+   [
+    "THEY",
+    58.42
+   ],
+   [
+    "KICKED",
+    58.58
+   ],
+   [
+    "HIM",
+    58.94
+   ]
+  ]
+ },
+ {
+  "start": 59.5,
+  "end": 60.58,
+  "text": "They never stopped him.",
+  "words": [
+   [
+    "THEY",
+    59.45
+   ],
+   [
+    "NEVER",
+    59.69
+   ],
+   [
+    "STOPPED",
+    60.01
+   ],
+   [
+    "HIM",
+    60.45
+   ]
+  ]
+ }
+]
