@@ -12,7 +12,7 @@ The owner works **only from an iPhone**: every edit, preview and render happens 
 - **Gradients, light and depth**: near-black canvas, soft radial light, slow drifting glows, vignette, subtle film grain, glass panels with hairline borders, glows on data marks.
 - **2D and 3D motion graphics**: SVG/CSS for data; Three.js (`Scene3D`) for hero objects and camera depth.
 - **Data storytelling**: animated statistics, timelines, maps, pitch diagrams and comparisons are first-class. Numbers count up, lines draw on, bars grow.
-- **Controlled pacing**: allow holds. Each scene gets ≥ 2.5 s; entrances ≈ 0.9 s; stagger ≈ 0.06 s; transitions 0.6–0.9 s. Motion settles before narration moves on.
+- **Controlled pacing, never boring**: a new visual event (word lock, number roll, photo move, card, diagram beat) every 1.5–2 s, keyed to the narration — never a static hold longer than 2 s. Scenes may run longer but must keep evolving inside; entrances ≈ 0.9 s; stagger ≈ 0.06 s; transitions 0.6–0.9 s. Motion settles before narration moves on.
 - **Hierarchy and spacing**: 8-pt grid (`space`), safe areas from `useLayout().safe`, max 3 text levels on screen, left-aligned unless it is a centred hero moment.
 
 **Reference look (owner-supplied, Nov 2026) — now the default for productions:**
@@ -30,7 +30,8 @@ The owner works **only from an iPhone**: every edit, preview and render happens 
 - **Sign-off**: end every production with the Apple-style end card "Produced by Shaljr" (small, bold, centred on paper, ~2.5 s after the narration; see `EndCard` in messi91/scenesB.tsx) unless told otherwise.
 - **TikTok**: videos must be ≥ 1:01 (Creator Program). Default master: 1080×1920, 60 fps, 20 Mbps.
 - **Delivery to the iPhone**: SendUserFile cards play but may not save. Also push the final MP4 to the `renders` branch with Git LFS (environment `football-motion-studio` allows lfs.github.com) and give the Safari link `https://github.com/silencator/football-motion-studio./raw/renders/<file>.mp4` (Share → Save Video).
-- **Standing defaults (owner need not repeat them)**: reference look + motion language, synthesised SFX (whooshes, clicks, ticks, pops, impacts, kick/net) synced to motion, no music, narration untouched, 9:16 60 fps, end card, GitHub delivery link.
+- **Standing defaults (owner need not repeat them)**: reference look + motion language, synthesised SFX (whooshes, clicks, ticks, pops, impacts, kick/net) synced to motion, no music, narration untouched, 9:16 60 fps, end card, GitHub delivery link, something happens every 1.5–2 s.
+- **The owner's script + audio are final**: animate whatever narration they send, exactly as recorded — no rewrites, no trims.
 - **Vary, don't copy**: keep the reference's language but design each film for its story — new layouts, new scene ideas, unused reference moves (morphing words, sideways camera pan along a sentence, timer-ring card, card with cursor tap) where they serve the text. Never a carbon copy of Messi 91.
 - **New-video intake**: when the owner sends audio + script, first reply briefly with exactly what is still needed (named photo list per story moment, optional crests, any open decisions) and the audio length check — then build once inputs arrive.
 - **Owner-prepared inputs** (when supplied, skip those steps): transparent PNG cut-outs (iOS "Lift Subject") → just run `grade-photos.py`; a script with stats → no fact-finding; a scene/photo plan → follow it.
