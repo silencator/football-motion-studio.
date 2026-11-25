@@ -2,7 +2,7 @@ import React from 'react';
 import {Sequence, staticFile, useVideoConfig} from 'remotion';
 import {Audio} from '@remotion/media';
 
-export type SfxName = 'whoosh-soft' | 'whoosh-fast' | 'whoosh-low' | 'click' | 'tick' | 'pop' | 'impact' | 'impact-soft' | 'kick' | 'net';
+export type SfxName = 'whoosh-soft' | 'whoosh-fast' | 'whoosh-low' | 'click' | 'tick' | 'pop' | 'impact' | 'impact-soft' | 'kick' | 'net' | 'whistle' | 'thud' | 'rip';
 
 /** One sound effect at an absolute second (top-level, outside Scenes). Files in public/sfx (scripts/make-sfx.py). */
 export const Sfx: React.FC<{at: number; name: SfxName; volume?: number}> = ({at, name, volume = 0.35}) => {

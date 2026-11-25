@@ -68,3 +68,18 @@ save('kick', norm(np.tanh(y * 1.4), -4))
 x = t(.7); n = sosfilt(butter(2, [1800, 9000], 'band', fs=SR, output='sos'), rng.standard_normal(len(x)))
 y = n * (0.6 + 0.4 * np.sin(2 * np.pi * 23 * x)) * env(len(x), .06, 2.5)
 save('net', norm(y, -12))
+
+# Referee whistle: pea-whistle tone (~2.9 kHz) with fast warble, short burst.
+x = t(.42); f = 2900 + 90 * np.sin(2 * np.pi * 34 * x); ph = 2 * np.pi * np.cumsum(f) / SR
+y = (np.sin(ph) + 0.25 * np.sin(2 * ph)) * env(len(x), .04, 1.2) * (1 - np.exp(-x * 300))
+y += sosfilt(butter(2, [2500, 6000], 'band', fs=SR, output='sos'), rng.standard_normal(len(x))) * env(len(x), .04, 1.2) * .08
+save('whistle', norm(y, -10))
+
+# Body hit (tackle / shoulder): dull low thud with a cloth-y noise burst.
+x = t(.35); f = 55 + 90 * np.exp(-x * 40); ph = 2 * np.pi * np.cumsum(f) / SR
+y = np.sin(ph) * np.exp(-x * 16) + sosfilt(butter(2, [300, 1800], 'band', fs=SR, output='sos'), rng.standard_normal(len(x))) * np.exp(-x * 60) * .7
+save('thud', norm(np.tanh(y * 2), -5))
+
+# Cloth pull: short rising band-noise rip.
+x = t(.22); n = rng.standard_normal(len(x)); y = bp_sweep(n, 900, 3200, q=2.5) * env(len(x), .7, 1.5) * (0.7 + 0.3 * np.sign(np.sin(2 * np.pi * 70 * x)))
+save('rip', norm(y, -10))

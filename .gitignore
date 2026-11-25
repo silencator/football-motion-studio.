@@ -8,3 +8,4 @@ out/
 
 # Licensed / third-party photos are kept out of git (re-create with scripts/grade-photos.py)
 public/images/messi/
+public/images/fouls/
